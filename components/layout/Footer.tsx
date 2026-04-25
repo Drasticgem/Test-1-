@@ -4,18 +4,18 @@ import { BUSINESS } from "@/lib/constants";
 import { Logo } from "@/components/layout/Logo";
 
 /**
- * Footer — vertical "brand moment" stack.
+ * Footer — CTA lead-in with a four-column detail grid.
  *
- *   Let's talk.   →   Copper CTA   →   Stacked OWEN lockup   →   Contact details
+ *   Let's talk.   →   Copper CTA   →   Desktop-spaced footer columns
  *
- * On mobile every block is centered and stacked. On desktop the layout
- * stays vertical for the hero stack (so the brand reads loud) and then
- * splits into navigation columns underneath.
+ * Mobile keeps the blocks centered and breathable with extra vertical
+ * rhythm. Desktop increases horizontal spacing and aligns content to
+ * the edges more naturally.
  */
 export function Footer() {
   return (
     <footer className="bg-navy-deep text-white">
-      <div className="container-1140 flex flex-col items-center py-20 text-center max-[768px]:py-16">
+      <div className="container-1140 flex flex-col items-center py-20 text-center max-[768px]:py-14">
         {/* 1. Let's talk */}
         <p
           className="mb-3 font-mono text-[11px] font-medium uppercase text-gold-light"
@@ -33,7 +33,7 @@ export function Footer() {
         >
           Let&rsquo;s talk.
         </h2>
-        <p className="mb-8 max-w-[420px] text-[14.5px] leading-[1.65] text-white/65">
+        <p className="mb-8 max-w-[560px] text-[15px] leading-[1.7] text-white/65">
           Honest work. Clean solutions. Plumbing in the Coastal Bend since 1976 — answer
           the phone, write the price, show up on time.
         </p>
@@ -41,53 +41,54 @@ export function Footer() {
         {/* 2. CTA */}
         <a
           href={BUSINESS.phoneHref}
-          className="copper-pulse mb-16 inline-flex items-center gap-2 rounded-full bg-gold px-9 py-4 text-[13px] font-bold uppercase text-white shadow-[0_10px_30px_rgba(194,104,42,0.4)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
+          className="copper-pulse mb-10 inline-flex items-center gap-2 rounded-full bg-gold px-9 py-4 text-[13px] font-bold uppercase text-white shadow-[0_10px_30px_rgba(194,104,42,0.4)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark md:mb-16"
           style={{ letterSpacing: "0.16em" }}
         >
           <Phone className="h-4 w-4" strokeWidth={2.25} aria-hidden="true" />
           Call {BUSINESS.phoneDisplay}
         </a>
 
-        {/* 3. Brand logo — stacked with tagline */}
-        <Logo
-          variant="stacked"
-          tone="dark"
-          size="lg"
-          className="mb-6 max-[480px]:scale-[0.78] max-[768px]:scale-90"
-        />
-
-        <p
-          className="font-mono text-[11px] uppercase text-white/45"
-          style={{ letterSpacing: "0.22em" }}
-        >
-          Family-owned since {BUSINESS.founded} · {BUSINESS.license}
-        </p>
+        {/* Mobile brand lockup directly below CTA, per reference design */}
+        <div className="md:hidden">
+          <Logo
+            variant="stacked"
+            tone="dark"
+            size="md"
+            className="mb-6 max-[480px]:scale-[0.86]"
+          />
+          <p
+            className="font-mono text-[11px] uppercase text-white/45"
+            style={{ letterSpacing: "0.22em" }}
+          >
+            Family-owned since {BUSINESS.founded} · {BUSINESS.license}
+          </p>
+        </div>
       </div>
 
-      {/* 4. Footer details — stacked on mobile, 3-up on desktop */}
-      <div className="border-t border-white/10">
-        <div className="container-1140 grid gap-12 py-14 md:grid-cols-3 md:gap-10 max-[768px]:py-10">
-          <div className="text-center md:text-left">
+      {/* 2a. Mobile footer details */}
+      <div className="border-t border-white/10 md:hidden">
+        <div className="mx-auto w-full max-w-[1320px] px-6 py-12 text-center">
+          <div>
             <p
-              className="mb-4 font-mono text-[10.5px] font-medium uppercase text-gold-light"
+              className="mb-5 font-mono text-[10.5px] font-medium uppercase text-gold-light"
               style={{ letterSpacing: "0.22em" }}
             >
               Contact
             </p>
-            <ul className="space-y-3 text-[14.5px] text-white/75">
-              <li className="flex items-center justify-center gap-3 md:justify-start">
+            <ul className="space-y-3.5 text-[14.5px] text-white/75">
+              <li className="flex items-center justify-center gap-3 rounded-md bg-white/[0.03] px-3 py-3">
                 <Phone className="h-4 w-4 shrink-0 text-gold" strokeWidth={2.25} aria-hidden="true" />
                 <a href={BUSINESS.phoneHref} className="font-bold text-white hover:text-gold-light">
                   {BUSINESS.phoneDisplay}
                 </a>
               </li>
-              <li className="flex items-center justify-center gap-3 md:justify-start">
+              <li className="flex items-center justify-center gap-3 rounded-md bg-white/[0.03] px-3 py-3">
                 <Mail className="h-4 w-4 shrink-0 text-gold" strokeWidth={2.25} aria-hidden="true" />
                 <a href={`mailto:${BUSINESS.email}`} className="hover:text-gold-light">
                   {BUSINESS.email}
                 </a>
               </li>
-              <li className="flex items-start justify-center gap-3 md:justify-start">
+              <li className="flex items-start justify-center gap-3 rounded-md bg-white/[0.03] px-3 py-3">
                 <MapPin
                   className="mt-0.5 h-4 w-4 shrink-0 text-gold"
                   strokeWidth={2.25}
@@ -95,7 +96,76 @@ export function Footer() {
                 />
                 <span>{BUSINESS.address.full}</span>
               </li>
-              <li className="text-[12.5px] text-white/55">
+              <li className="pt-1 text-[12.5px] text-white/55">
+                Office hours: M–F · {BUSINESS.hours.weekdays}
+                <br />
+                <span className="text-gold-light">Emergency line answered 24/7</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-11">
+            <p
+              className="mb-4 font-mono text-[10.5px] font-medium uppercase text-gold-light"
+              style={{ letterSpacing: "0.22em" }}
+            >
+              Service Area
+            </p>
+            <ul className="grid grid-cols-2 justify-center gap-x-6 gap-y-3 text-[15px] text-white/75">
+              {BUSINESS.areaServed.map((city) => (
+                <li key={city}>{city}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* 2b. Desktop footer details */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto hidden w-full max-w-[1320px] gap-16 px-6 py-14 md:grid md:grid-cols-2 md:gap-x-14 md:gap-y-12 lg:grid-cols-[1.15fr_1fr_1fr_0.9fr] lg:px-12 xl:gap-x-20">
+          <div className="text-center md:text-left">
+            <Logo variant="horizontal" tone="dark" size="sm" className="mb-6" />
+            <p className="max-w-[320px] text-[15px] leading-[1.7] text-white/68 md:max-w-none">
+              Family-owned plumbing and drain service across {BUSINESS.areaServed[0]} and the
+              Coastal Bend.
+            </p>
+            <p
+              className="mt-5 font-mono text-[11px] uppercase text-white/45"
+              style={{ letterSpacing: "0.22em" }}
+            >
+              {BUSINESS.license} · Est. {BUSINESS.founded}
+            </p>
+          </div>
+
+          <div className="text-center md:text-left">
+            <p
+              className="mb-4 font-mono text-[10.5px] font-medium uppercase text-gold-light"
+              style={{ letterSpacing: "0.22em" }}
+            >
+              Contact
+            </p>
+            <ul className="space-y-3.5 text-[14.5px] text-white/75">
+              <li className="flex items-center justify-center gap-3 rounded-md bg-white/[0.03] px-3 py-2.5 md:justify-start">
+                <Phone className="h-4 w-4 shrink-0 text-gold" strokeWidth={2.25} aria-hidden="true" />
+                <a href={BUSINESS.phoneHref} className="font-bold text-white hover:text-gold-light">
+                  {BUSINESS.phoneDisplay}
+                </a>
+              </li>
+              <li className="flex items-center justify-center gap-3 rounded-md bg-white/[0.03] px-3 py-2.5 md:justify-start">
+                <Mail className="h-4 w-4 shrink-0 text-gold" strokeWidth={2.25} aria-hidden="true" />
+                <a href={`mailto:${BUSINESS.email}`} className="hover:text-gold-light">
+                  {BUSINESS.email}
+                </a>
+              </li>
+              <li className="flex items-start justify-center gap-3 rounded-md bg-white/[0.03] px-3 py-2.5 md:justify-start">
+                <MapPin
+                  className="mt-0.5 h-4 w-4 shrink-0 text-gold"
+                  strokeWidth={2.25}
+                  aria-hidden="true"
+                />
+                <span>{BUSINESS.address.full}</span>
+              </li>
+              <li className="pt-1 text-[12.5px] text-white/55">
                 Office hours: M–F · {BUSINESS.hours.weekdays}
                 <br />
                 <span className="text-gold-light">Emergency line answered 24/7</span>
@@ -110,7 +180,7 @@ export function Footer() {
             >
               Service Area
             </p>
-            <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] text-white/75 md:justify-start">
+            <ul className="grid grid-cols-2 justify-center gap-x-6 gap-y-3 text-[15px] text-white/75 md:justify-start">
               {BUSINESS.areaServed.map((city) => (
                 <li key={city}>{city}</li>
               ))}
@@ -124,7 +194,7 @@ export function Footer() {
             >
               Navigate
             </p>
-            <ul className="space-y-2.5 text-[14px] text-white/75">
+            <ul className="space-y-3 text-[15px] text-white/75">
               <li>
                 <Link href="/" className="hover:text-gold-light">
                   Home
@@ -151,7 +221,10 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-1140 flex flex-col items-center justify-between gap-2 py-6 text-[11.5px] text-white/45 md:flex-row">
+        <div
+          className="mx-auto flex w-full max-w-[1320px] flex-col items-center justify-between gap-4 px-6 py-6 text-[11.5px] text-white/45 md:flex-row md:px-12"
+          style={{ paddingBottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))" }}
+        >
           <span>
             © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
           </span>

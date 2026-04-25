@@ -60,16 +60,25 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    background: var(--color-navy-deep);
+    min-height: 100%;
+    overscroll-behavior-y: none;
   }
 
   body {
     margin: 0;
+    min-height: 100%;
+    min-height: 100dvh;
     font-family: var(--font-body);
     color: var(--color-ink);
-    background: var(--color-paper);
+    background: var(--color-navy-deep);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.55;
+  }
+
+  main {
+    background: var(--color-paper);
   }
 
   ::selection {
