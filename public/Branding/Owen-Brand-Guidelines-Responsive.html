@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Owen Plumbing &amp; Drain — Brand Guidelines</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --tide:#0A2F4F;--tide-deep:#061E33;--copper:#C2682A;--copper-soft:#E5A472;
+    --mist:#F2F5F8;--paper:#FBFBF9;--slate:#64748B;--slate-l:#94A3B8;--ink:#0B1220;
+    --rule:#E5E7EB;--rule-s:#D1D5DB;
+    --display:'Roboto Slab','Zilla Slab',Georgia,serif;
+    --body:'Satoshi',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --side-w:300px;--top-h:60px;--pad:clamp(24px,4vw,56px);
+  }
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--tide);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+
+  /* TOPBAR */
+  .topbar{position:sticky;top:0;z-index:40;height:var(--top-h);background:rgba(251,251,249,.88);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 var(--pad);justify-content:space-between;gap:12px}
+  .tb-l{display:flex;align-items:center;gap:12px;min-width:0}
+  .tb-l .title{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tide);white-space:nowrap}
+  .tb-l .sep{width:1px;height:16px;background:var(--rule-s)}
+  .tb-l .crumb{font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media (max-width:520px){.tb-l .crumb,.tb-l .sep{display:none}}
+  .tb-r{display:flex;align-items:center;gap:18px}
+  .tb-r .num{font-family:var(--mono);font-size:11px;color:var(--copper);letter-spacing:.1em}
+  .tb-r .sec{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tide);display:none}
+  @media (min-width:720px){.tb-r .sec{display:inline}}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--rule-s);background:var(--paper);border-radius:6px;cursor:pointer;color:var(--tide)}
+  .menu-btn svg{width:18px;height:18px}
+  @media (min-width:980px){.menu-btn{display:none}}
+
+  /* SHELL */
+  .shell{display:grid;grid-template-columns:1fr;min-height:calc(100vh - var(--top-h))}
+  @media (min-width:980px){.shell{grid-template-columns:var(--side-w) 1fr}}
+
+  /* SIDEBAR */
+  .sidebar{background:var(--paper);border-right:1px solid var(--rule);padding:32px 28px 48px;position:fixed;top:var(--top-h);left:0;bottom:0;width:86%;max-width:340px;z-index:50;overflow-y:auto;transform:translateX(-100%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:0 24px 60px -24px rgba(11,18,32,.18)}
+  .sidebar.open{transform:translateX(0)}
+  @media (min-width:980px){.sidebar{position:sticky;top:var(--top-h);height:calc(100vh - var(--top-h));width:100%;max-width:none;transform:none;box-shadow:none}}
+  .backdrop{position:fixed;inset:var(--top-h) 0 0 0;background:rgba(11,18,32,.4);z-index:45;opacity:0;pointer-events:none;transition:opacity .25s}
+  .backdrop.show{opacity:1;pointer-events:auto}
+  @media (min-width:980px){.backdrop{display:none}}
+
+  .brand-mini{display:flex;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--rule);margin-bottom:24px}
+  .brand-mini svg{width:16px;height:23px;color:var(--copper)}
+  .brand-mini .t{font-family:var(--display);font-weight:900;font-size:15px;letter-spacing:.02em;color:var(--tide)}
+
+  .eyebrow{font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tide);margin-bottom:12px;position:relative;padding-left:22px}
+  .eyebrow::before{content:'';position:absolute;left:0;top:50%;width:14px;height:2px;background:var(--copper);transform:translateY(-50%)}
+
+  .sidebar p.intro{font-size:13px;line-height:1.6;color:var(--slate);margin-bottom:28px}
+  .sidebar .div{height:1px;background:var(--rule);margin:24px 0}
+
+  .nav{list-style:none;margin-bottom:28px}
+  .nav li{margin-bottom:2px}
+  .nav a{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:6px;font-weight:500;font-size:13px;color:var(--slate);transition:background .15s,color .15s}
+  .nav a:hover{background:var(--mist);color:var(--tide)}
+  .nav a.active{background:var(--tide);color:#fff}
+  .nav a.active .n{color:var(--copper-soft)}
+  .nav .n{font-family:var(--mono);font-size:10px;color:var(--copper);letter-spacing:.08em;font-weight:500;flex-shrink:0}
+
+  .vals{display:flex;flex-direction:column;gap:16px}
+  .val{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start}
+  .v-ic{width:30px;height:30px;border:1.5px solid var(--copper);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--copper);flex-shrink:0}
+  .v-ic svg{width:15px;height:15px}
+  .v-t{font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tide);margin-bottom:2px}
+  .v-d{font-size:12px;color:var(--slate);line-height:1.5}
+
+  .pal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .pal{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
+  .pal .ring{width:32px;height:32px;border-radius:50%;border:2px solid rgba(11,18,32,.06);transition:transform .2s}
+  .pal:hover .ring{transform:scale(1.08)}
+  .pal .nm{font-weight:700;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tide)}
+  .pal .hx{font-family:var(--mono);font-size:8px;color:var(--slate)}
+
+  /* MAIN */
+  main{min-width:0}
+  section.spread{padding:clamp(40px,6vw,72px) var(--pad) clamp(60px,8vw,100px);border-bottom:1px solid var(--rule)}
+  section.spread.tint{background:var(--mist)}
+  section.spread:last-of-type{border-bottom:0}
+
+  .sh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:20px;margin-bottom:40px;border-bottom:1px solid var(--rule-s);flex-wrap:wrap}
+  .sh-l{display:flex;align-items:baseline;gap:18px}
+  .sh-num{font-family:var(--mono);font-size:13px;color:var(--copper);letter-spacing:.1em;font-weight:500}
+  .sh h2{font-weight:700;font-size:clamp(14px,1.4vw,16px);letter-spacing:.2em;text-transform:uppercase;color:var(--tide)}
+  .sh-meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:500}
+
+  .pl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--copper);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .pl .ltr{color:var(--copper);font-weight:500}
+  .pl .tx{color:var(--slate);text-transform:uppercase;font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.16em}
+  .pd{height:1px;background:var(--rule);margin:56px 0}
+
+  /* ─── WORDMARK (primary stacked) ─── */
+  .wm-stage{display:flex;align-items:center;justify-content:center;padding:clamp(32px,6vw,64px) 20px}
+  .wm{display:inline-flex;flex-direction:column;align-items:center;color:var(--tide)}
+  .wm.on-dark{color:#fff}
+  .wm.on-cop{color:#fff}
+  .wm-est{display:flex;align-items:center;justify-content:center;gap:clamp(14px,2.5vw,28px);margin-bottom:6px}
+  .wm-est .yr{font-family:var(--display);font-weight:700;font-size:clamp(10px,1vw,12px);letter-spacing:.22em}
+  .wm-est .drop{width:clamp(22px,2.8vw,32px);height:clamp(31px,4vw,46px);color:var(--copper);flex-shrink:0}
+  .wm.on-dark .wm-est .drop{color:var(--copper-soft)}
+  .wm-word{font-family:var(--display);font-weight:900;font-size:clamp(52px,11vw,120px);letter-spacing:.01em;line-height:.92;margin-bottom:10px}
+  .wm-sub{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.4vw,14px);font-weight:700;font-size:clamp(10px,1.1vw,13px);letter-spacing:.28em;text-transform:uppercase}
+  .wm-sub .dash{display:inline-block;width:clamp(18px,2.8vw,34px);height:2px;background:var(--copper)}
+  .wm.on-dark .wm-sub .dash{background:var(--copper-soft)}
+  .wm-tag{font-weight:500;font-size:clamp(10px,1vw,12px);letter-spacing:.32em;text-transform:uppercase;opacity:.75;margin-top:14px}
+
+  /* Horizontal lockup */
+  .wm-h{display:inline-flex;align-items:stretch;color:var(--tide);gap:clamp(14px,2.5vw,24px)}
+  .wmh-l{display:flex;flex-direction:column;align-items:center}
+  .wmh-w{font-family:var(--display);font-weight:900;font-size:clamp(40px,7vw,76px);line-height:.92;letter-spacing:.01em}
+  .wmh-e{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;font-family:var(--display);font-weight:700;font-size:clamp(9px,.9vw,11px);letter-spacing:.22em;color:var(--copper)}
+  .wmh-e .dash{width:clamp(14px,1.8vw,22px);height:2px;background:var(--copper)}
+  .wmh-div{width:1.5px;background:var(--copper);align-self:stretch}
+  .wmh-r{display:flex;flex-direction:column;justify-content:center;gap:4px;font-family:var(--body);font-weight:700;font-size:clamp(11px,1.3vw,14px);letter-spacing:.22em;line-height:1.2;text-transform:uppercase}
+
+  /* small variants */
+  .wm.sm .wm-est .yr{font-size:9.5px}
+  .wm.sm .wm-est .drop{width:18px;height:26px}
+  .wm.sm .wm-word{font-size:clamp(36px,5.5vw,52px);margin-bottom:6px}
+  .wm.sm .wm-sub{font-size:8.5px;letter-spacing:.24em}
+  .wm.sm .wm-sub .dash{width:12px}
+
+  /* SECTION 01 */
+  .prim{display:grid;grid-template-columns:1fr;gap:0}
+  @media (min-width:880px){
+    .prim{grid-template-columns:1.15fr 1fr}
+    .prim>*:first-child{border-right:1px solid var(--rule)}
+  }
+  @media (max-width:879px){.prim>*:first-child{border-bottom:1px solid var(--rule)}}
+
+  .alt{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+  @media (min-width:720px){.alt{grid-template-columns:repeat(4,1fr)}}
+  .alt-c{display:flex;align-items:center;justify-content:center;padding:clamp(24px,4vw,40px) 18px;border-right:1px solid var(--rule);min-height:170px}
+  .alt-c:last-child{border-right:0}
+  @media (max-width:719px){.alt-c:nth-child(2n){border-right:0}.alt-c:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+
+  .frm{border:2px solid var(--tide);border-radius:6px;padding:18px 22px 12px;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative}
+  .frm .fd{position:absolute;top:-16px;background:var(--paper);padding:0 6px}
+  .frm .fd svg{width:20px;height:28px;color:var(--copper)}
+  section.tint .frm .fd{background:var(--mist)}
+  .frm .w{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:.01em;color:var(--tide);line-height:1;margin-top:4px}
+  .frm .s{font-weight:700;font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tide)}
+  .frm .y{font-family:var(--display);font-weight:700;font-size:8.5px;letter-spacing:.22em;color:var(--copper);margin-top:2px}
+
+  .badge{width:170px;height:170px;border-radius:50%;border:1.5px solid var(--tide);position:relative;display:flex;align-items:center;justify-content:center}
+  .b-in{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .b-in .b-est{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:700;font-size:8px;letter-spacing:.22em;color:var(--tide);text-transform:uppercase;line-height:1}
+  .b-in .b-est .drop{width:10px;height:14px;color:var(--copper);margin-bottom:0}
+  .b-in .w{font-family:var(--display);font-weight:900;font-size:26px;letter-spacing:.01em;color:var(--tide);line-height:1;margin-top:3px}
+  .b-in .s{font-family:var(--body);font-weight:700;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--tide);white-space:nowrap;margin-top:2px}
+  .b-arc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .b-arc text{font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.28em;fill:var(--tide);text-transform:uppercase}
+
+  .sbs{display:inline-flex;align-items:center;gap:12px}
+  .sbs .drop{width:26px;height:34px;color:var(--copper);flex-shrink:0}
+  .sbs .w{font-family:var(--display);font-weight:900;font-size:34px;letter-spacing:.01em;color:var(--tide);line-height:.9}
+  .sbs .s{font-weight:700;font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--tide);margin-top:4px}
+
+  .split{display:grid;grid-template-columns:1fr;gap:56px}
+  @media (min-width:880px){.split{grid-template-columns:1fr 1fr}}
+
+  .marks{display:flex;gap:14px;flex-wrap:wrap}
+  .mk{width:68px;height:68px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .mk.ct{background:var(--tide);border-radius:50%;color:var(--copper)}
+  .mk.cl{border:2px solid var(--tide);border-radius:50%;color:var(--copper);background:var(--paper)}
+  .mk.st{background:var(--tide);border-radius:12px;color:#fff}
+  .mk.sc{background:var(--copper);border-radius:12px;color:#fff}
+  .mk svg{width:26px;height:37px}
+
+  .wo{display:flex;flex-direction:column;gap:26px}
+  .wo1{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+  .wo1 .w{font-family:var(--display);font-weight:900;font-size:40px;letter-spacing:.01em;color:var(--tide);line-height:1}
+  .wo1 .s{font-weight:700;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--tide)}
+  .wo2{display:flex;align-items:center;gap:14px}
+  .wo2 .dash{width:16px;height:2px;background:var(--copper)}
+  .wo2 .in{display:flex;flex-direction:column;align-items:center}
+  .wo2 .w{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:.04em;color:var(--tide);line-height:.95}
+  .wo2 .s{font-weight:700;font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--tide);margin-top:3px}
+
+  .usage{display:grid;grid-template-columns:1fr;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+  @media (min-width:720px){.usage{grid-template-columns:repeat(4,1fr)}}
+  .uc{aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:20px;border-right:1px solid var(--rule);position:relative}
+  .uc:last-child{border-right:0}
+  @media (max-width:719px){.uc{border-right:0;border-bottom:1px solid var(--rule);aspect-ratio:2.2}.uc:last-child{border-bottom:0}}
+  .uc.p{background:var(--paper)}
+  .uc.t{background:var(--tide)}
+  .uc.c{background:var(--copper)}
+  .uc.ph{background:linear-gradient(180deg,rgba(10,47,79,.55) 0%,rgba(6,30,51,.88) 100%),repeating-linear-gradient(100deg,rgba(255,255,255,.04) 0px,rgba(255,255,255,.04) 1px,transparent 1px,transparent 14px),linear-gradient(135deg,#2A3F52 0%,#14243A 100%)}
+  .mi{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .mi .el{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:7.5px;letter-spacing:.24em}
+  .mi .el svg{width:11px;height:15px}
+  .mi .w{font-family:var(--display);font-weight:900;font-size:clamp(20px,3vw,28px);letter-spacing:.01em;line-height:1}
+  .mi .s{font-weight:700;font-size:7px;letter-spacing:.22em;text-transform:uppercase}
+  .uc.p .mi{color:var(--tide)}.uc.p .mi .el svg{color:var(--copper)}
+  .uc.t .mi{color:#fff}.uc.t .mi .el svg{color:var(--copper-soft)}
+  .uc.c .mi{color:#fff}.uc.c .mi .el svg{color:#fff}
+  .uc.ph .mi{color:#fff}.uc.ph .mi .el svg{color:var(--copper-soft)}
+
+  .gc{display:grid;grid-template-columns:1fr;gap:40px;margin-top:48px}
+  @media (min-width:880px){.gc{grid-template-columns:1fr 1fr;gap:56px}}
+  .gl{list-style:none}
+  .gl li{padding:11px 0;border-bottom:1px solid var(--rule);display:flex;gap:12px;font-size:13.5px;color:var(--ink);line-height:1.5}
+  .gl li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--copper);flex-shrink:0;margin-top:8px}
+
+  .cs{border:1px solid var(--rule);border-radius:4px;padding:40px;background:var(--paper);display:flex;align-items:center;justify-content:center;position:relative;min-height:240px}
+  .cs-v{position:relative;display:inline-block}
+  .cs-f{position:absolute;inset:-36px;border:1px dashed var(--copper);pointer-events:none}
+  .cs-x{position:absolute;width:16px;height:16px;border:1px solid var(--copper);background:rgba(194,104,42,.1);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--copper);font-size:9.5px}
+  .cs-x.tl{top:-36px;left:-36px;transform:translate(-50%,-50%)}
+  .cs-x.tr{top:-36px;right:-36px;transform:translate(50%,-50%)}
+  .cs-x.bl{bottom:-36px;left:-36px;transform:translate(-50%,50%)}
+  .cs-x.br{bottom:-36px;right:-36px;transform:translate(50%,50%)}
+  .cs-n{position:absolute;bottom:12px;right:14px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+
+  /* SECTION 02 COLOR */
+  .sw-g{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:600px){.sw-g.two{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:900px){.sw-g.three{grid-template-columns:repeat(3,1fr)}}
+  .sw{background:var(--paper);border:1px solid var(--rule);border-radius:4px;overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer}
+  .sw:hover{transform:translateY(-3px);box-shadow:0 20px 40px -20px rgba(11,18,32,.15)}
+  .sw .ch{aspect-ratio:1.5;position:relative}
+  .sw .ch .ci{position:absolute;top:10px;right:12px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;background:rgba(255,255,255,.18);color:rgba(255,255,255,.8);border-radius:2px;opacity:0;transition:opacity .2s}
+  .sw.lt .ch .ci{background:rgba(11,18,32,.08);color:var(--slate)}
+  .sw:hover .ch .ci{opacity:1}
+  .sw .if{padding:14px 16px 16px;border-top:1px solid var(--rule)}
+  .sw .nm{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.02em;color:var(--tide);margin-bottom:2px}
+  .sw .ro{font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:8px}
+  .sw .vs{font-family:var(--mono);font-size:11px;color:var(--slate);line-height:1.6}
+  .sw .vs span{display:block}
+  .sw .vs em{color:var(--slate-l);font-style:normal;margin-right:8px;text-transform:uppercase;font-size:9px;letter-spacing:.1em}
+
+  .rb{display:flex;height:54px;border-radius:4px;overflow:hidden;border:1px solid var(--rule)}
+  .rb>div{display:flex;align-items:center;padding:0 16px;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .rbp{background:var(--paper);color:var(--slate);flex:60;border-right:1px solid var(--rule)}
+  .rbt{background:var(--tide);color:rgba(255,255,255,.9);flex:30}
+  .rbc{background:var(--copper);color:#fff;flex:10}
+
+  .pg{display:grid;grid-template-columns:1fr;gap:10px}
+  @media (min-width:700px){.pg{grid-template-columns:repeat(2,1fr)}}
+  .pr{display:flex;align-items:center;justify-content:space-between;padding:22px;border-radius:4px;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:.01em;gap:12px;flex-wrap:wrap}
+  .pr .r{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px;font-weight:500}
+  .pr.a{background:var(--paper);color:var(--tide);border:1px solid var(--rule)}.pr.a .r{background:var(--mist);color:var(--slate)}
+  .pr.b{background:var(--tide);color:#fff}.pr.b .r{background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+  .pr.c{background:var(--paper);color:var(--copper);border:1px solid var(--rule)}.pr.c .r{background:var(--mist);color:var(--slate)}
+  .pr.d{background:var(--copper);color:#fff}.pr.d .r{background:rgba(255,255,255,.16);color:#fff}
+
+  /* SECTION 03 TYPE */
+  .spec{display:grid;grid-template-columns:1fr;gap:24px;padding-bottom:48px;border-bottom:1px solid var(--rule);margin-bottom:48px}
+  .spec:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
+  @media (min-width:900px){.spec{grid-template-columns:1fr 1.4fr;gap:48px}}
+  .spec .fn{font-family:var(--display);font-weight:900;font-size:clamp(42px,6.8vw,80px);letter-spacing:.01em;line-height:.92;color:var(--tide)}
+  .spec.body .fn{font-family:var(--body);font-weight:900;letter-spacing:-.03em}
+  .spec.mono .fn{font-family:var(--mono);font-weight:500;letter-spacing:-.02em;font-size:clamp(28px,4.2vw,48px)}
+  .spec .fm{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:700;margin-top:16px}
+  .spec .fd{font-size:14px;color:var(--slate);line-height:1.6;margin-top:12px;max-width:38ch}
+  .al{font-family:var(--display);font-weight:900;font-size:clamp(20px,3vw,34px);letter-spacing:.01em;color:var(--tide);line-height:1.1;margin-bottom:28px}
+  .al.body{font-family:var(--body);font-weight:700;letter-spacing:-.01em}
+  .al.mono{font-family:var(--mono);font-weight:500;font-size:clamp(15px,2vw,22px);letter-spacing:0}
+  .wts{display:flex;flex-direction:column}
+  .wr{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+  .wr .lb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+  .wr .ex{font-family:var(--display);font-size:clamp(17px,2.3vw,24px);letter-spacing:.01em;color:var(--tide);line-height:1.1}
+  .wr.body .ex{font-family:var(--body);letter-spacing:-.01em}
+
+  .scale{border-top:1px solid var(--rule);margin-top:40px}
+  .sr{display:grid;grid-template-columns:60px 1fr 80px;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+  .sr .tg{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
+  .sr .sa{font-family:var(--display);font-weight:800;letter-spacing:.01em;color:var(--tide);line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sr.body .sa{font-family:var(--body);font-weight:500;letter-spacing:-.005em;white-space:normal}
+  .sr .px{font-family:var(--mono);font-size:10px;color:var(--slate);text-align:right}
+
+  /* SECTION 04 VOICE */
+  .va-g{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  @media (min-width:640px){.va-g{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1100px){.va-g{grid-template-columns:repeat(4,1fr)}}
+  .va{background:var(--paper);padding:26px 22px;min-height:170px;display:flex;flex-direction:column}
+  .va .n{font-family:var(--mono);font-size:11px;color:var(--copper);letter-spacing:.1em;margin-bottom:22px}
+  .va .t{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:.01em;color:var(--tide);margin-bottom:6px}
+  .va .d{font-size:13px;color:var(--slate);line-height:1.55}
+
+  .dd-g{display:grid;grid-template-columns:1fr;gap:48px}
+  @media (min-width:880px){.dd-g{grid-template-columns:1fr 1fr}}
+  .dd h4{font-family:var(--display);font-weight:800;font-size:22px;color:var(--tide);margin-bottom:8px}
+  .dd .dp{font-size:13px;color:var(--slate);margin-bottom:18px}
+  .dd ul{list-style:none;border-top:1px solid var(--rule)}
+  .dd li{padding:13px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--ink);line-height:1.5;display:flex;gap:12px;align-items:flex-start}
+  .dd li::before{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;margin-top:2px}
+  .dd.do li::before{content:'✓';background:rgba(16,185,129,.12);color:#047857}
+  .dd.dn li::before{content:'×';background:rgba(220,38,38,.1);color:#B91C1C;font-size:14px}
+  .dd li em{display:block;font-style:normal;color:var(--slate);font-size:12px;margin-top:3px}
+
+  .sm-g{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:700px){.sm-g{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1100px){.sm-g{grid-template-columns:repeat(3,1fr)}}
+  .sc{border:1px solid var(--rule);border-radius:4px;padding:22px;background:var(--paper)}
+  .sc .cx{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--copper);margin-bottom:12px}
+  .sc .cp{font-family:var(--display);font-weight:500;font-size:16px;color:var(--tide);line-height:1.35}
+
+  /* SECTION 05 IMAGERY */
+  .ig{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media (min-width:900px){.ig{grid-template-columns:repeat(3,1fr)}}
+  .ic{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--paper)}
+  .cv{aspect-ratio:4/3;position:relative}
+  .cv.a{background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.28) 0%,transparent 45%),linear-gradient(135deg,#1A4568 0%,#0A2F4F 60%,#061E33 100%)}
+  .cv.b{background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,transparent 40%),linear-gradient(135deg,#D68142 0%,#C2682A 50%,#9C5121 100%)}
+  .cv.c{background:radial-gradient(circle at 50% 110%,rgba(10,47,79,.35) 0%,transparent 55%),linear-gradient(180deg,#E3EBF1 0%,#C5D2DC 100%)}
+  .cv.d{background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 2px,transparent 2px,transparent 8px),linear-gradient(135deg,#262626 0%,#0D0D0D 100%)}
+  .cv.e{background:radial-gradient(circle at 70% 30%,rgba(229,164,114,.34) 0%,transparent 50%),linear-gradient(135deg,#F0EADE 0%,#DDD1BD 100%)}
+  .cv.f{background:linear-gradient(180deg,transparent 55%,rgba(10,47,79,.6) 100%),linear-gradient(135deg,#6B7C8C 0%,#485764 100%)}
+  .cv .lb{position:absolute;bottom:12px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border-radius:2px;color:rgba(255,255,255,.9);background:rgba(0,0,0,.25);backdrop-filter:blur(6px)}
+  .cv.c .lb,.cv.e .lb{color:var(--tide);background:rgba(255,255,255,.6)}
+  .ic .if{padding:14px 16px;border-top:1px solid var(--rule)}
+  .ic h5{font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.01em;color:var(--tide);margin-bottom:2px}
+  .ic p{font-size:12.5px;color:var(--slate);line-height:1.5}
+
+  /* SECTION 06 APPS */
+  .ag{display:grid;grid-template-columns:1fr;gap:20px}
+  @media (min-width:880px){.ag{grid-template-columns:1.1fr 1fr;gap:28px}}
+  .as{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:36px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:340px}
+  .as .cap{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--slate);text-transform:uppercase;align-self:flex-start}
+
+  .bc{width:100%;max-width:300px;aspect-ratio:1.75;border-radius:6px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 56px -32px rgba(11,18,32,.35)}
+  .bc.f{background:var(--tide);color:#fff;align-items:center;justify-content:center}
+  .bc.bk{background:var(--paper);color:var(--tide);border:1px solid var(--rule)}
+  .bc.f .in{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .bc.f .ln{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:7.5px;letter-spacing:.22em}
+  .bc.f .ln svg{width:11px;height:16px;color:var(--copper)}
+  .bc.f .w{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:.02em}
+  .bc.f .s{font-weight:700;font-size:7px;letter-spacing:.22em;text-transform:uppercase}
+  .bc.bk .nm{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.01em}
+  .bc.bk .tt{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);margin-top:2px;font-weight:600}
+  .bc.bk .cn{font-family:var(--mono);font-size:9.5px;color:var(--slate);line-height:1.7}
+  .bc.bk .cn span{color:var(--tide)}
+
+  /* Vehicle livery — side-profile van mockup */
+  .van-scene{position:relative;width:100%;max-width:480px;aspect-ratio:460/210;margin:0 auto}
+  .van-art{width:100%;height:100%;display:block;filter:drop-shadow(0 22px 32px rgba(11,18,32,.2))}
+  .van-logo{position:absolute;left:6%;top:26%;width:36%;display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff;pointer-events:none}
+  .van-logo .est{display:flex;align-items:center;gap:5px;font-family:var(--display);font-weight:700;font-size:clamp(6px,.95vw,8.5px);letter-spacing:.24em;color:var(--copper-soft);text-transform:uppercase;line-height:1}
+  .van-logo .est .drop{width:9px;height:12px;color:var(--copper-soft)}
+  .van-logo .w{font-family:var(--display);font-weight:900;font-size:clamp(22px,4.6vw,36px);letter-spacing:.015em;line-height:1;margin:3px 0 4px;color:#fff}
+  .van-logo .sub{display:flex;align-items:center;gap:6px;font-family:var(--body);font-weight:700;font-size:clamp(6px,.9vw,8px);letter-spacing:.24em;text-transform:uppercase;color:#fff}
+  .van-logo .sub .dash{width:clamp(8px,1.4vw,14px);height:1.5px;background:var(--copper-soft)}
+  .van-phone{position:absolute;right:14%;top:12%;font-family:var(--display);font-weight:800;font-size:clamp(9px,1.35vw,13px);color:var(--copper-soft);text-align:right;line-height:1;pointer-events:none;letter-spacing:.005em}
+  .van-phone .lb{display:block;font-family:var(--body);font-weight:700;font-size:clamp(5.5px,.75vw,7px);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px}
+  .van-caption{font-family:var(--mono);font-size:clamp(7.5px,.85vw,9px);letter-spacing:.14em;text-transform:uppercase;color:var(--slate);text-align:center;margin-top:20px}
+
+  .sr-row{display:grid;grid-template-columns:1fr;gap:20px}
+  @media (min-width:640px){.sr-row{grid-template-columns:auto 1fr;align-items:center}}
+  .av{width:100px;height:100px;border-radius:50%;background:var(--tide);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .av svg{width:42px;height:60px;color:var(--copper)}
+  .cov{aspect-ratio:4/1;border-radius:4px;background:var(--tide);padding:26px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative;color:#fff}
+  .cov::after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(194,104,42,.3),transparent 70%);right:-50px;top:-50px}
+  .cov .l{font-family:var(--display);font-weight:900;font-size:clamp(18px,2.8vw,30px);letter-spacing:.01em;line-height:1;position:relative;z-index:1}
+  .cov .l .ac{color:var(--copper-soft);font-weight:500}
+  .cov .r{font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);text-align:right;position:relative;z-index:1}
+
+  /* SECTION 07 UI */
+  .ub{margin-bottom:44px}
+  .ub h4{font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:18px}
+  .br{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:4px;font-weight:600;font-size:13.5px;border:1px solid transparent;cursor:pointer;transition:all .18s;font-family:var(--body)}
+  .btn.p{background:var(--tide);color:#fff}.btn.p:hover{background:var(--tide-deep)}
+  .btn.e{background:var(--copper);color:#fff}.btn.e:hover{background:#9C5121}
+  .btn.e::before{content:'';width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}100%{box-shadow:0 0 0 8px rgba(255,255,255,0)}}
+  .btn.sc{background:var(--paper);color:var(--tide);border-color:var(--rule-s)}.btn.sc:hover{background:var(--mist)}
+  .btn.g{background:transparent;color:var(--tide)}.btn.g:hover{color:var(--copper)}
+
+  .id{display:grid;grid-template-columns:1fr;gap:14px;max-width:500px}
+  @media (min-width:600px){.id{grid-template-columns:1fr 1fr}}
+  .id label{display:flex;flex-direction:column;gap:6px}
+  .id .l{font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+  .id input,.id select{padding:11px 13px;border:1px solid var(--rule-s);background:var(--paper);border-radius:4px;font:inherit;font-size:13.5px;color:var(--ink);transition:border-color .18s,box-shadow .18s}
+  .id input:focus,.id select:focus{outline:none;border-color:var(--tide);box-shadow:0 0 0 3px rgba(10,47,79,.12)}
+
+  .tk{display:grid;grid-template-columns:1fr;gap:10px}
+  @media (min-width:760px){.tk{grid-template-columns:1fr 1fr}}
+  .tkn{display:grid;grid-template-columns:90px 1fr auto;gap:12px;padding:11px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);align-items:center;font-size:13px}
+  .tkn .k{font-family:var(--mono);color:var(--copper);font-size:11px}
+  .tkn .v{font-family:var(--mono);color:var(--slate);font-size:11px;text-align:right}
+  .tkn .n{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.01em;color:var(--tide)}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,.85);padding:60px var(--pad) 36px}
+  .fg{display:grid;grid-template-columns:1fr;gap:36px}
+  @media (min-width:760px){.fg{grid-template-columns:2fr 1fr 1fr}}
+  .fb{font-family:var(--display);font-weight:900;font-size:clamp(30px,4.6vw,46px);letter-spacing:.01em;line-height:.95}
+  .fb .ac{color:var(--copper-soft);font-weight:500}
+  .fb p{font-weight:400;font-size:13px;color:rgba(255,255,255,.55);line-height:1.55;letter-spacing:0;max-width:38ch;margin-top:16px}
+  .fc h6{font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+  .fc ul{list-style:none}
+  .fc li{font-size:13px;color:rgba(255,255,255,.85);padding:3px 0}
+  .fbb{margin-top:44px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+  /* Reveal */
+  .rv{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+  .rv.in{opacity:1;transform:translateY(0)}
+
+  /* Toast */
+  .tst{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:4px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;z-index:100;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+  .tst.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="tb-l">
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+    <span class="title">Owen Plumbing &amp; Drain</span>
+    <span class="sep"></span>
+    <span class="crumb">Brand Guidelines</span>
+  </div>
+  <div class="tb-r">
+    <span class="num" id="topNum">01</span>
+    <span class="sec" id="topSec">Logo &amp; Word Mark</span>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-mini">
+      <svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg>
+      <span class="t">OWEN</span>
+    </div>
+
+    <div class="eyebrow">Our Mark</div>
+    <p class="intro">Our logo represents reliability, craftsmanship, and care. Built on decades of honest work, it reflects the trust our customers count on day in and day out.</p>
+
+    <div class="div"></div>
+
+    <div class="eyebrow">Sections</div>
+    <ul class="nav">
+      <li><a href="#s01" data-n="01" data-s="Logo &amp; Word Mark" class="active"><span class="n">01</span>Logo &amp; Word Mark</a></li>
+      <li><a href="#s02" data-n="02" data-s="Color"><span class="n">02</span>Color</a></li>
+      <li><a href="#s03" data-n="03" data-s="Typography"><span class="n">03</span>Typography</a></li>
+      <li><a href="#s04" data-n="04" data-s="Voice &amp; Tone"><span class="n">04</span>Voice &amp; Tone</a></li>
+      <li><a href="#s05" data-n="05" data-s="Imagery"><span class="n">05</span>Imagery</a></li>
+      <li><a href="#s06" data-n="06" data-s="Applications"><span class="n">06</span>Applications</a></li>
+      <li><a href="#s07" data-n="07" data-s="Digital UI"><span class="n">07</span>Digital UI</a></li>
+    </ul>
+
+    <div class="div"></div>
+
+    <div class="eyebrow">Brand Values</div>
+    <div class="vals">
+      <div class="val">
+        <div class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8Z"/></svg></div>
+        <div><div class="v-t">Trusted</div><div class="v-d">Count on us to do the job right.</div></div>
+      </div>
+      <div class="val">
+        <div class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
+        <div><div class="v-t">Crafted</div><div class="v-d">Quality work from skilled professionals.</div></div>
+      </div>
+      <div class="val">
+        <div class="v-ic"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+        <div><div class="v-t">Clean</div><div class="v-d">Solutions that protect your home.</div></div>
+      </div>
+      <div class="val">
+        <div class="v-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="v-t">Local</div><div class="v-d">Proudly serving our community since 1976.</div></div>
+      </div>
+    </div>
+
+    <div class="div"></div>
+
+    <div class="eyebrow">Color Palette</div>
+    <div class="pal-grid">
+      <div class="pal" data-copy="#0A2F4F"><div class="ring" style="background:#0A2F4F"></div><div class="nm">Tide</div><div class="hx">#0A2F4F</div></div>
+      <div class="pal" data-copy="#061E33"><div class="ring" style="background:#061E33"></div><div class="nm">Deep</div><div class="hx">#061E33</div></div>
+      <div class="pal" data-copy="#C2682A"><div class="ring" style="background:#C2682A"></div><div class="nm">Copper</div><div class="hx">#C2682A</div></div>
+      <div class="pal" data-copy="#F2F5F8"><div class="ring" style="background:#F2F5F8;border-color:#E5E7EB"></div><div class="nm">Mist</div><div class="hx">#F2F5F8</div></div>
+      <div class="pal" data-copy="#64748B"><div class="ring" style="background:#64748B"></div><div class="nm">Slate</div><div class="hx">#64748B</div></div>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- ══ 01 LOGO ══ -->
+    <section class="spread" id="s01" data-n="01" data-s="Logo &amp; Word Mark">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 01</span><h2>Logo &amp; Word Mark</h2></div>
+        <div><span class="sh-meta">Our primary visual signature</span></div>
+      </div>
+
+      <div class="pl"><span class="ltr">A</span><span class="tx">Primary Lockup</span></div>
+      <div class="prim">
+        <div class="wm-stage">
+          <div class="wm">
+            <div class="wm-est">
+              <span class="yr">EST.</span>
+              <svg class="drop" viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg>
+              <span class="yr">1976</span>
+            </div>
+            <div class="wm-word">OWEN</div>
+            <div class="wm-sub"><span class="dash"></span><span>Plumbing &amp; Drain</span><span class="dash"></span></div>
+            <div class="wm-tag">Honest Work. Clean Solutions.</div>
+          </div>
+        </div>
+        <div class="wm-stage">
+          <div class="wm-h">
+            <div class="wmh-l">
+              <div class="wmh-w">OWEN</div>
+              <div class="wmh-e"><span class="dash"></span><span>EST. 1976</span><span class="dash"></span></div>
+            </div>
+            <div class="wmh-div"></div>
+            <div class="wmh-r"><div>Plumbing</div><div>&amp; Drain</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">B</span><span class="tx">Alternate Lockups</span></div>
+      <div class="alt">
+        <div class="alt-c">
+          <div class="wm sm">
+            <div class="wm-est"><span class="yr">EST.</span><svg class="drop" viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span class="yr">1976</span></div>
+            <div class="wm-word">OWEN</div>
+            <div class="wm-sub" style="margin-top:3px"><span>Plumbing</span></div>
+            <div class="wm-sub" style="margin-top:2px"><span>&amp; Drain</span></div>
+          </div>
+        </div>
+        <div class="alt-c">
+          <div class="frm">
+            <div class="fd"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+            <div class="w">OWEN</div>
+            <div class="s">Plumbing &amp; Drain</div>
+            <div class="y">Est. 1976</div>
+          </div>
+        </div>
+        <div class="alt-c">
+          <div class="badge">
+            <svg class="b-arc" viewBox="0 0 170 170">
+              <defs>
+                <path id="tp" d="M 25,85 A 60,60 0 0,1 145,85"/>
+                <path id="bt" d="M 25,85 A 60,60 0 0,0 145,85"/>
+              </defs>
+              <circle cx="22" cy="85" r="2" fill="#C2682A"/>
+              <circle cx="148" cy="85" r="2" fill="#C2682A"/>
+              <text><textPath href="#tp" startOffset="50%" text-anchor="middle">HONEST WORK</textPath></text>
+              <text><textPath href="#bt" startOffset="50%" text-anchor="middle">CLEAN SOLUTIONS</textPath></text>
+            </svg>
+            <div class="b-in">
+              <div class="b-est">
+                <span>EST.</span>
+                <svg class="drop" viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg>
+                <span>1976</span>
+              </div>
+              <div class="w">OWEN</div>
+              <div class="s">Plumbing &amp; Drain</div>
+            </div>
+          </div>
+        </div>
+        <div class="alt-c">
+          <div class="sbs">
+            <svg class="drop" viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg>
+            <div><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="split">
+        <div>
+          <div class="pl"><span class="ltr">C</span><span class="tx">Icon / Mark</span></div>
+          <div class="marks">
+            <div class="mk ct"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+            <div class="mk cl"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+            <div class="mk st"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+            <div class="mk sc"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+          </div>
+        </div>
+        <div>
+          <div class="pl"><span class="ltr">D</span><span class="tx">Word Mark Only</span></div>
+          <div class="wo">
+            <div class="wo1"><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div>
+            <div class="wo2">
+              <span class="dash"></span>
+              <div class="in"><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div>
+              <span class="dash"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">E</span><span class="tx">Usage Examples</span></div>
+      <div class="usage">
+        <div class="uc p"><div class="mi"><div class="el"><span>EST.</span><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span>1976</span></div><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div></div>
+        <div class="uc t"><div class="mi"><div class="el"><span>EST.</span><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span>1976</span></div><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div></div>
+        <div class="uc c"><div class="mi"><div class="el"><span>EST.</span><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span>1976</span></div><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div></div>
+        <div class="uc ph"><div class="mi"><div class="el"><span>EST.</span><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span>1976</span></div><div class="w">OWEN</div><div class="s">Plumbing &amp; Drain</div></div></div>
+      </div>
+
+      <div class="gc">
+        <div>
+          <div class="pl" style="margin-bottom:14px"><span class="tx" style="color:var(--tide)">Logo Guidelines</span></div>
+          <ul class="gl">
+            <li>Maintain clear space equal to the height of the droplet on all sides.</li>
+            <li>Do not alter the proportions, spacing, or colors of the wordmark.</li>
+            <li>Use only the provided lockup variants — never reconstruct.</li>
+            <li>Ensure sufficient contrast against the background (AA minimum).</li>
+            <li>Minimum print size: 0.75" wide stacked, 1.25" horizontal.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="pl" style="margin-bottom:14px"><span class="tx" style="color:var(--tide)">Clear Space</span></div>
+          <div class="cs">
+            <div class="cs-v">
+              <div class="cs-f"></div>
+              <div class="cs-x tl">x</div><div class="cs-x tr">x</div><div class="cs-x bl">x</div><div class="cs-x br">x</div>
+              <div class="wm sm">
+                <div class="wm-est"><span class="yr">EST.</span><svg class="drop" viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span class="yr">1976</span></div>
+                <div class="wm-word">OWEN</div>
+                <div class="wm-sub"><span>Plumbing &amp; Drain</span></div>
+              </div>
+            </div>
+            <div class="cs-n">x = height of droplet</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 02 COLOR ══ -->
+    <section class="spread tint" id="s02" data-n="02" data-s="Color">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 02</span><h2>Color</h2></div>
+        <div><span class="sh-meta">A restrained, trust-anchored palette</span></div>
+      </div>
+
+      <div class="pl"><span class="ltr">A</span><span class="tx">Primary Palette</span></div>
+      <div class="sw-g two">
+        <div class="sw" data-copy="#0A2F4F">
+          <div class="ch" style="background:#0A2F4F"><span class="ci">Click to copy</span></div>
+          <div class="if"><div class="nm">Tide</div><div class="ro">Primary · Trust</div><div class="vs"><span><em>HEX</em>#0A2F4F</span><span><em>RGB</em>10 · 47 · 79</span><span><em>CMYK</em>87 · 70 · 38 · 26</span><span><em>Pantone</em>539 C</span></div></div>
+        </div>
+        <div class="sw" data-copy="#C2682A">
+          <div class="ch" style="background:#C2682A"><span class="ci">Click to copy</span></div>
+          <div class="if"><div class="nm">Copper</div><div class="ro">Accent · Action</div><div class="vs"><span><em>HEX</em>#C2682A</span><span><em>RGB</em>194 · 104 · 42</span><span><em>CMYK</em>22 · 65 · 95 · 8</span><span><em>Pantone</em>1535 C</span></div></div>
+        </div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">B</span><span class="tx">Secondary &amp; Neutrals</span></div>
+      <div class="sw-g three">
+        <div class="sw" data-copy="#061E33"><div class="ch" style="background:#061E33"><span class="ci">Copy</span></div><div class="if"><div class="nm">Tide Deep</div><div class="ro">Depth · Shadow</div><div class="vs"><span><em>HEX</em>#061E33</span></div></div></div>
+        <div class="sw lt" data-copy="#F2F5F8"><div class="ch" style="background:#F2F5F8;border-bottom:1px solid var(--rule)"><span class="ci">Copy</span></div><div class="if"><div class="nm">Mist</div><div class="ro">Surface · Quiet</div><div class="vs"><span><em>HEX</em>#F2F5F8</span></div></div></div>
+        <div class="sw" data-copy="#64748B"><div class="ch" style="background:#64748B"><span class="ci">Copy</span></div><div class="if"><div class="nm">Slate</div><div class="ro">Text · Secondary</div><div class="vs"><span><em>HEX</em>#64748B</span></div></div></div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">C</span><span class="tx">Usage Ratio — 60 / 30 / 10</span></div>
+      <div class="rb">
+        <div class="rbp">Paper · 60%</div>
+        <div class="rbt">Tide · 30%</div>
+        <div class="rbc">Copper · 10%</div>
+      </div>
+      <p style="color:var(--slate);font-size:13.5px;margin-top:14px;max-width:64ch;line-height:1.6">Whitespace and Tide carry the work. Copper is reserved for primary actions, the phone number, the emergency CTA, and small editorial accents.</p>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">D</span><span class="tx">Approved Pairings</span></div>
+      <div class="pg">
+        <div class="pr a">Tide on Paper<span class="r">AAA · 14.8:1</span></div>
+        <div class="pr b">Paper on Tide<span class="r">AAA · 14.8:1</span></div>
+        <div class="pr c">Copper on Paper<span class="r">AA · 4.7:1</span></div>
+        <div class="pr d">Paper on Copper<span class="r">AA Large</span></div>
+      </div>
+      <p style="color:var(--slate);font-size:13.5px;margin-top:14px;max-width:64ch;line-height:1.6">Copper on Paper meets WCAG AA for body text. Paper on Copper is approved for headlines and large interface elements only.</p>
+    </section>
+
+    <!-- ══ 03 TYPE ══ -->
+    <section class="spread" id="s03" data-n="03" data-s="Typography">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 03</span><h2>Typography</h2></div>
+        <div><span class="sh-meta">Slab-serif authority, clean body text</span></div>
+      </div>
+
+      <div class="spec">
+        <div>
+          <div class="fn">Roboto<br/>Slab.</div>
+          <div class="fm">Display · Google Fonts</div>
+          <p class="fd">A sturdy slab serif that does the work of the OWEN wordmark — heavy, deliberate, deeply rooted. Use for the logo, headlines, pull quotes, and any moment that needs weight.</p>
+        </div>
+        <div>
+          <div class="al">ABCDEFGHIJKLMNOP<br/>QRSTUVWXYZ<br/>0123456789 &amp; ?</div>
+          <div class="wts">
+            <div class="wr"><span class="lb">400 Reg</span><span class="ex" style="font-weight:400">The drain is clear.</span></div>
+            <div class="wr"><span class="lb">500 Med</span><span class="ex" style="font-weight:500">The drain is clear.</span></div>
+            <div class="wr"><span class="lb">700 Bold</span><span class="ex" style="font-weight:700">The drain is clear.</span></div>
+            <div class="wr"><span class="lb">800 XBold</span><span class="ex" style="font-weight:800">The drain is clear.</span></div>
+            <div class="wr"><span class="lb">900 Black</span><span class="ex" style="font-weight:900">The drain is clear.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec body">
+        <div>
+          <div class="fn">Satoshi.</div>
+          <div class="fm">Body &amp; Subtext · Fontshare</div>
+          <p class="fd">Contemporary and quietly geometric, Satoshi handles body copy, navigation, buttons, labels, and extended reading. Paired with Roboto Slab, it keeps the voice modern while the headlines stay grounded.</p>
+        </div>
+        <div>
+          <div class="al body">ABCDEFGHIJKLMNOP<br/>QRSTUVWXYZ<br/>0123456789 &amp; ?</div>
+          <div class="wts">
+            <div class="wr body"><span class="lb">300 Light</span><span class="ex" style="font-family:var(--body);font-weight:300">Family-owned since 1976.</span></div>
+            <div class="wr body"><span class="lb">400 Reg</span><span class="ex" style="font-family:var(--body);font-weight:400">Family-owned since 1976.</span></div>
+            <div class="wr body"><span class="lb">500 Med</span><span class="ex" style="font-family:var(--body);font-weight:500">Family-owned since 1976.</span></div>
+            <div class="wr body"><span class="lb">700 Bold</span><span class="ex" style="font-family:var(--body);font-weight:700">Family-owned since 1976.</span></div>
+            <div class="wr body"><span class="lb">900 Black</span><span class="ex" style="font-family:var(--body);font-weight:900">Family-owned since 1976.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec mono">
+        <div>
+          <div class="fn">JetBrains<br/>Mono.</div>
+          <div class="fm">Technical · Google Fonts</div>
+          <p class="fd">For labels, license numbers, hex codes, and technical metadata. Used sparingly — a flavor, not a workhorse.</p>
+        </div>
+        <div><div class="al mono">M8552 · #0A2F4F<br/>(361) 371-8163<br/>est. 1976</div></div>
+      </div>
+
+      <div style="margin-top:56px">
+        <div class="pl"><span class="tx" style="color:var(--tide)">Type Scale</span></div>
+        <div class="scale">
+          <div class="sr"><span class="tg">Display</span><span class="sa" style="font-size:clamp(32px,5.5vw,58px)">Modern service.</span><span class="px">58 / .92</span></div>
+          <div class="sr"><span class="tg">H1</span><span class="sa" style="font-size:clamp(26px,4vw,44px)">Plumbing done right.</span><span class="px">44 / 1.0</span></div>
+          <div class="sr"><span class="tg">H2</span><span class="sa" style="font-size:clamp(20px,3vw,32px)">Trusted since 1976.</span><span class="px">32 / 1.1</span></div>
+          <div class="sr"><span class="tg">H3</span><span class="sa" style="font-size:22px">Free written estimates.</span><span class="px">22 / 1.2</span></div>
+          <div class="sr body"><span class="tg">Body L</span><span class="sa" style="font-size:16px">When plumbing problems strike, call the experts. Owen has served the Coastal Bend since 1976.</span><span class="px">16 / 1.55</span></div>
+          <div class="sr body"><span class="tg">Body</span><span class="sa" style="font-size:14.5px">Same-day service across Corpus Christi. Licensed and insured.</span><span class="px">14.5 / 1.55</span></div>
+          <div class="sr body"><span class="tg">Caption</span><span class="sa" style="font-size:12.5px;color:var(--slate)">Hours: M–F · 8a–5p · 24/7 emergency</span><span class="px">12.5 / 1.5</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 04 VOICE ══ -->
+    <section class="spread tint" id="s04" data-n="04" data-s="Voice &amp; Tone">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 04</span><h2>Voice &amp; Tone</h2></div>
+        <div><span class="sh-meta">Calm, capable, local</span></div>
+      </div>
+
+      <div class="pl"><span class="ltr">A</span><span class="tx">Voice Attributes</span></div>
+      <div class="va-g">
+        <div class="va"><span class="n">01</span><div><div class="t">Direct</div><div class="d">Lead with the answer. Cut the throat-clearing.</div></div></div>
+        <div class="va"><span class="n">02</span><div><div class="t">Warm</div><div class="d">Local, human, never corporate or scripted.</div></div></div>
+        <div class="va"><span class="n">03</span><div><div class="t">Confident</div><div class="d">Fifty years of evidence. We don't need to oversell.</div></div></div>
+        <div class="va"><span class="n">04</span><div><div class="t">Plain-spoken</div><div class="d">Translate plumbing into homeowner English.</div></div></div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">B</span><span class="tx">Do &amp; Don't</span></div>
+      <div class="dd-g">
+        <div class="dd do">
+          <h4>Do</h4>
+          <p class="dp">The phrasing we want associated with Owen.</p>
+          <ul>
+            <li>"We can be there this afternoon."<em>Confirms speed without overselling.</em></li>
+            <li>"Here's what it'll cost — before we start."<em>Plain pricing, plain promise.</em></li>
+            <li>"Family-owned since 1976."<em>Heritage stated once, no embellishment.</em></li>
+            <li>"Licensed, insured, and on time."<em>Three things that matter, in seven words.</em></li>
+          </ul>
+        </div>
+        <div class="dd dn">
+          <h4>Don't</h4>
+          <p class="dp">Phrasing that pulls Owen toward generic-contractor territory.</p>
+          <ul>
+            <li>"Your one-stop solution for all plumbing needs!"<em>Empty, salesy, says nothing.</em></li>
+            <li>"We dispatch certified hydraulic technicians…"<em>Jargon. No homeowner says "hydraulic."</em></li>
+            <li>"Don't let leaks ruin your day!"<em>Fear-based, exclamatory, off-brand.</em></li>
+            <li>"Award-winning service excellence."<em>Vague superlatives erode trust.</em></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">C</span><span class="tx">Sample Copy</span></div>
+      <div class="sm-g">
+        <div class="sc"><div class="cx">Homepage Hero</div><p class="cp">Honest work. Clean solutions. Plumbing in the Coastal Bend since 1976.</p></div>
+        <div class="sc"><div class="cx">Emergency Banner</div><p class="cp">Burst pipe? Call (361) 371-8163. We answer 24/7.</p></div>
+        <div class="sc"><div class="cx">Service Description</div><p class="cp">Tankless, gas, electric — we install, repair, and replace water heaters across Corpus Christi.</p></div>
+        <div class="sc"><div class="cx">Email Signature</div><p class="cp">Owen Plumbing &amp; Drain · Master Lic. M8552 · est. 1976</p></div>
+        <div class="sc"><div class="cx">Truck Callout</div><p class="cp">If we say we'll be there at two, we'll be there at two.</p></div>
+        <div class="sc"><div class="cx">Review Reply</div><p class="cp">Thanks, Maria. Glad we could get the heater swapped before the cold front hit.</p></div>
+      </div>
+    </section>
+
+    <!-- ══ 05 IMAGERY ══ -->
+    <section class="spread" id="s05" data-n="05" data-s="Imagery">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 05</span><h2>Imagery</h2></div>
+        <div><span class="sh-meta">Real people, real homes, real work</span></div>
+      </div>
+
+      <div class="pl"><span class="ltr">A</span><span class="tx">Photographic Direction</span></div>
+      <div class="ig">
+        <div class="ic"><div class="cv a"><span class="lb">Tone · Tide</span></div><div class="if"><h5>Editorial portraits</h5><p>Real Owen technicians, in uniform, in homes.</p></div></div>
+        <div class="ic"><div class="cv b"><span class="lb">Tone · Copper</span></div><div class="if"><h5>Material close-ups</h5><p>Copper pipe, brass fittings, hands at work.</p></div></div>
+        <div class="ic"><div class="cv c"><span class="lb">Tone · Mist</span></div><div class="if"><h5>Coastal context</h5><p>Houses, neighborhoods, the bay.</p></div></div>
+        <div class="ic"><div class="cv e"><span class="lb">Tone · Warm</span></div><div class="if"><h5>Heritage</h5><p>Archival-feeling photography nodding to 1976.</p></div></div>
+        <div class="ic"><div class="cv d"><span class="lb">Tone · Dark</span></div><div class="if"><h5>Tools &amp; texture</h5><p>High-contrast monochrome of fixtures &amp; pipework.</p></div></div>
+        <div class="ic"><div class="cv f"><span class="lb">Tone · Slate</span></div><div class="if"><h5>Vehicles in motion</h5><p>The Owen truck on local streets.</p></div></div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="dd-g">
+        <div class="dd do">
+          <h4>Do</h4>
+          <p class="dp">What Owen photography looks like.</p>
+          <ul>
+            <li>Use natural light — soft window light wins every time.</li>
+            <li>Photograph real Owen people, in real homes.</li>
+            <li>Show the craft — pipework, hands, fittings, tools.</li>
+            <li>Keep color treatment quiet: subtle warmth, gentle contrast.</li>
+          </ul>
+        </div>
+        <div class="dd dn">
+          <h4>Don't</h4>
+          <p class="dp">Imagery that pulls us into generic-contractor territory.</p>
+          <ul>
+            <li>Don't use staged-handshake or thumbs-up stock photos.</li>
+            <li>Don't use HDR, heavy filters, or saturated grading.</li>
+            <li>Don't show distress imagery — flooded floors, fear scenes.</li>
+            <li>Don't use the cartoon plumber illustration. Retire it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 06 APPS ══ -->
+    <section class="spread tint" id="s06" data-n="06" data-s="Applications">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 06</span><h2>Applications</h2></div>
+        <div><span class="sh-meta">How the system shows up in the world</span></div>
+      </div>
+
+      <div class="pl"><span class="ltr">A</span><span class="tx">Stationery &amp; Vehicle</span></div>
+      <div class="ag">
+        <div class="as">
+          <div class="cap">Business card · 3.5″ × 2″</div>
+          <div class="bc f">
+            <div class="in">
+              <div class="ln"><span>EST.</span><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg><span>1976</span></div>
+              <div class="w">OWEN</div>
+              <div class="s">Plumbing &amp; Drain</div>
+            </div>
+          </div>
+          <div class="bc bk">
+            <div><div class="nm">Marcus Owen</div><div class="tt">Master Plumber</div></div>
+            <div class="cn">
+              <div><span>(361) 371-8163</span></div>
+              <div>owenplumbing.com</div>
+              <div>2418 Sacky Dr · Corpus Christi, TX</div>
+              <div>Master Lic. M8552</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="as">
+          <div class="cap">Vehicle livery · side panel</div>
+          <div class="van-scene">
+            <svg class="van-art" viewBox="0 0 460 210" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="Owen Plumbing van livery mockup">
+              <defs>
+                <linearGradient id="van-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#144869"/>
+                  <stop offset="55%" stop-color="#0A2F4F"/>
+                  <stop offset="100%" stop-color="#071F36"/>
+                </linearGradient>
+                <linearGradient id="van-glass" x1="0" y1="0" x2="0.4" y2="1">
+                  <stop offset="0%" stop-color="#DCE9F3"/>
+                  <stop offset="100%" stop-color="#8FA9BC"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Ground shadow -->
+              <ellipse cx="230" cy="202" rx="210" ry="4" fill="rgba(11,18,32,.18)"/>
+
+              <!-- Van body -->
+              <path d="M 16 166 L 16 62 C 16 54 22 48 30 48 L 352 48 L 412 78 L 436 96 C 439 98 442 101 442 106 L 442 166 Z" fill="url(#van-grad)"/>
+
+              <!-- Roof highlight -->
+              <path d="M 30 48 L 352 48 L 412 78 L 442 96 L 442 100 L 412 82 L 352 52 L 32 52 C 28 52 24 55 22 60 L 16 66 L 16 62 C 16 54 22 48 30 48 Z" fill="rgba(255,255,255,.08)"/>
+
+              <!-- Windshield -->
+              <path d="M 354 52 L 408 80 L 430 94 L 360 94 Z" fill="url(#van-glass)" opacity="0.9"/>
+              <!-- Windshield reflection -->
+              <path d="M 360 94 L 380 94 L 396 76 L 372 64 Z" fill="rgba(255,255,255,.35)"/>
+
+              <!-- Cab side window -->
+              <rect x="326" y="58" width="24" height="32" rx="2" fill="url(#van-glass)" opacity="0.75"/>
+
+              <!-- Cargo panel small window -->
+              <rect x="28" y="60" width="82" height="28" rx="2" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.08)" stroke-width="0.5"/>
+
+              <!-- Door seams -->
+              <line x1="196" y1="50" x2="196" y2="166" stroke="rgba(0,0,0,.18)" stroke-width="1"/>
+              <line x1="326" y1="94" x2="326" y2="166" stroke="rgba(0,0,0,.15)" stroke-width="1"/>
+
+              <!-- Door handle -->
+              <rect x="176" y="116" width="14" height="3" rx="1.5" fill="rgba(255,255,255,.22)"/>
+
+              <!-- Rear taillight -->
+              <rect x="18" y="130" width="5" height="16" rx="1" fill="#C2682A"/>
+
+              <!-- Copper accent side stripe -->
+              <rect x="16" y="152" width="416" height="2" fill="#C2682A" opacity="0.7"/>
+
+              <!-- Front bumper -->
+              <rect x="424" y="150" width="18" height="16" rx="2" fill="#061E33"/>
+              <!-- Headlight -->
+              <rect x="420" y="98" width="16" height="6" rx="1" fill="#E5A472" opacity="0.8"/>
+
+              <!-- Wheel wells (dark cavities) -->
+              <circle cx="82" cy="166" r="30" fill="#050F1E"/>
+              <circle cx="382" cy="166" r="30" fill="#050F1E"/>
+
+              <!-- Rear wheel -->
+              <g transform="translate(82,178)">
+                <circle r="26" fill="#0B1220"/>
+                <circle r="24" fill="none" stroke="#2A3441" stroke-width="1"/>
+                <circle r="15" fill="#3F4F63"/>
+                <circle r="5" fill="#0B1220"/>
+                <g stroke="#0B1220" stroke-width="2.4" stroke-linecap="round">
+                  <line x1="0" y1="-12" x2="0" y2="12"/>
+                  <line x1="-12" y1="0" x2="12" y2="0"/>
+                  <line x1="-8.5" y1="-8.5" x2="8.5" y2="8.5"/>
+                  <line x1="-8.5" y1="8.5" x2="8.5" y2="-8.5"/>
+                </g>
+              </g>
+
+              <!-- Front wheel -->
+              <g transform="translate(382,178)">
+                <circle r="26" fill="#0B1220"/>
+                <circle r="24" fill="none" stroke="#2A3441" stroke-width="1"/>
+                <circle r="15" fill="#3F4F63"/>
+                <circle r="5" fill="#0B1220"/>
+                <g stroke="#0B1220" stroke-width="2.4" stroke-linecap="round">
+                  <line x1="0" y1="-12" x2="0" y2="12"/>
+                  <line x1="-12" y1="0" x2="12" y2="0"/>
+                  <line x1="-8.5" y1="-8.5" x2="8.5" y2="8.5"/>
+                  <line x1="-8.5" y1="8.5" x2="8.5" y2="-8.5"/>
+                </g>
+              </g>
+            </svg>
+
+            <!-- Logo overlay on cargo panel -->
+            <div class="van-logo">
+              <div class="est">
+                <span>EST.</span>
+                <svg class="drop" viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg>
+                <span>1976</span>
+              </div>
+              <div class="w">OWEN</div>
+              <div class="sub">
+                <span class="dash"></span>
+                <span>Plumbing &amp; Drain</span>
+                <span class="dash"></span>
+              </div>
+            </div>
+
+            <!-- Phone overlay on cab -->
+            <div class="van-phone">
+              <span class="lb">24/7 Service</span>
+              (361) 371-8163
+            </div>
+          </div>
+          <div class="van-caption">Master Lic. M8552 · Corpus Christi, TX</div>
+        </div>
+      </div>
+
+      <div class="pd"></div>
+
+      <div class="pl"><span class="ltr">B</span><span class="tx">Social · Avatar &amp; Cover</span></div>
+      <div class="cov">
+        <div class="l">Honest work.<br/><span class="ac">Clean solutions.</span></div>
+        <div class="r">est. 1976<br/>Corpus Christi</div>
+      </div>
+      <div class="sr-row" style="margin-top:22px">
+        <div class="av"><svg viewBox="0 0 24 34" fill="currentColor"><path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z"/></svg></div>
+        <div>
+          <div class="pl"><span class="tx" style="color:var(--tide)">Profile Avatar · 1024 × 1024</span></div>
+          <p style="color:var(--slate);font-size:13.5px;max-width:48ch;line-height:1.6">The standalone copper drop on a Tide field is the only approved profile mark. Never crop the wordmark into a circle.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 07 DIGITAL UI ══ -->
+    <section class="spread" id="s07" data-n="07" data-s="Digital UI">
+      <div class="sh">
+        <div class="sh-l"><span class="sh-num">— 07</span><h2>Digital UI</h2></div>
+        <div><span class="sh-meta">Components &amp; tokens for the website</span></div>
+      </div>
+
+      <div class="ub">
+        <h4>Buttons</h4>
+        <div class="br">
+          <button class="btn p">Request a quote</button>
+          <button class="btn e">Call now · (361) 371-8163</button>
+          <button class="btn sc">View services</button>
+          <button class="btn g">Read more →</button>
+        </div>
+        <p style="margin-top:14px;color:var(--slate);font-size:13px;max-width:54ch;line-height:1.55">The emergency button uses Copper with a subtle pulsing dot. Reserve it for persistent header CTAs and emergency landing pages.</p>
+      </div>
+
+      <div class="ub">
+        <h4>Form Fields</h4>
+        <div class="id">
+          <label><span class="l">Name</span><input type="text" placeholder="Your name" /></label>
+          <label><span class="l">Phone</span><input type="tel" placeholder="(361) 000-0000" /></label>
+          <label><span class="l">Service needed</span><select><option>Leak detection</option><option>Water heater</option><option>Drain cleaning</option><option>Repipe</option></select></label>
+          <label><span class="l">Best time</span><input type="text" placeholder="Today, this afternoon" /></label>
+        </div>
+      </div>
+
+      <div class="ub">
+        <h4>Design Tokens</h4>
+        <div class="tk">
+          <div class="tkn"><span class="k">--tide</span><span class="n">Tide</span><span class="v">#0A2F4F</span></div>
+          <div class="tkn"><span class="k">--copper</span><span class="n">Copper</span><span class="v">#C2682A</span></div>
+          <div class="tkn"><span class="k">--ink</span><span class="n">Ink</span><span class="v">#0B1220</span></div>
+          <div class="tkn"><span class="k">--mist</span><span class="n">Mist</span><span class="v">#F2F5F8</span></div>
+          <div class="tkn"><span class="k">--radius</span><span class="n">Radius</span><span class="v">4 · 6 · 12</span></div>
+          <div class="tkn"><span class="k">--rule</span><span class="n">Rule</span><span class="v">#E5E7EB</span></div>
+          <div class="tkn"><span class="k">font-display</span><span class="n">Roboto Slab</span><span class="v">400–900</span></div>
+          <div class="tkn"><span class="k">font-body</span><span class="n">Satoshi</span><span class="v">300–900</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="fg">
+        <div>
+          <div class="fb">Owen<br/><span class="ac">since 1976.</span></div>
+          <p>Brand guidelines maintained for Owen Plumbing &amp; Drain, Inc. For asset requests or co-marketing approvals, contact the studio.</p>
+        </div>
+        <div class="fc">
+          <h6>Document</h6>
+          <ul><li>Edition 01</li><li>April 2026</li><li>Next review · Oct 2026</li></ul>
+        </div>
+        <div class="fc">
+          <h6>Assets</h6>
+          <ul><li>Logo files · /brand/logo</li><li>Color tokens · /brand/color</li><li>Type files · /brand/type</li><li>Templates · /brand/templates</li></ul>
+        </div>
+      </div>
+      <div class="fbb">
+        <span>Owen Plumbing &amp; Drain · Master Lic. M8552</span>
+        <span>v1.0 · April 2026</span>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<div class="tst" id="toast">Copied —</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('backdrop');
+  const open = () => { sidebar.classList.add('open'); backdrop.classList.add('show'); };
+  const close = () => { sidebar.classList.remove('open'); backdrop.classList.remove('show'); };
+  menuBtn.addEventListener('click', open);
+  backdrop.addEventListener('click', close);
+  document.querySelectorAll('.nav a').forEach(a => {
+    a.addEventListener('click', () => { if (window.innerWidth < 980) close(); });
+  });
+
+  const topNum = document.getElementById('topNum');
+  const topSec = document.getElementById('topSec');
+  const sections = document.querySelectorAll('section.spread');
+  const navLinks = document.querySelectorAll('.nav a');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const n = e.target.dataset.n, s = e.target.dataset.s;
+        if (n) topNum.textContent = n;
+        if (s) topSec.innerHTML = s;
+        navLinks.forEach(a => a.classList.toggle('active', a.dataset.n === n));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+  sections.forEach(s => io.observe(s));
+
+  const toast = document.getElementById('toast');
+  let tt;
+  document.querySelectorAll('[data-copy]').forEach(el => {
+    el.addEventListener('click', () => {
+      const v = el.getAttribute('data-copy');
+      if (!v) return;
+      navigator.clipboard?.writeText(v).then(() => {
+        toast.textContent = 'Copied — ' + v;
+        toast.classList.add('show');
+        clearTimeout(tt);
+        tt = setTimeout(() => toast.classList.remove('show'), 1600);
+      }).catch(() => {});
+    });
+  });
+
+  const rv = document.querySelectorAll('.wm-stage,.alt-c,.mk,.wo1,.wo2,.uc,.gl,.cs,.sw,.pr,.spec,.va,.dd,.sc,.ic,.as,.cov,.tkn,.btn');
+  rv.forEach(el => el.classList.add('rv'));
+  const rio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  rv.forEach(el => rio.observe(el));
+</script>
+</body>
+</html>
