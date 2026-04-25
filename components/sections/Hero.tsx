@@ -36,9 +36,9 @@ export function Hero() {
         style={{
           background: `
             linear-gradient(180deg,
-              rgba(0,0,0,0.7) 0%,
-              rgba(0,0,0,0.4) 40%,
-              rgba(0,0,0,0.15) 100%)
+              rgba(0,0,0,0.55) 0%,
+              rgba(0,0,0,0.3) 40%,
+              rgba(0,0,0,0.1) 100%)
           `,
         }}
       />

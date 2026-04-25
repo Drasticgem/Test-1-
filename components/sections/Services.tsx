@@ -87,7 +87,7 @@ function ServicePanel({
     <article
       className={[
         "group relative isolate overflow-hidden",
-        "min-h-[480px] max-[1024px]:min-h-[460px] max-[768px]:min-h-[600px] max-[480px]:min-h-[560px]",
+        "min-h-[640px] max-[1024px]:min-h-[580px] max-[768px]:min-h-[620px] max-[480px]:min-h-[560px]",
         index > 0 ? "border-t border-warm-gray" : "",
       ].join(" ")}
     >
@@ -101,27 +101,34 @@ function ServicePanel({
         className="object-cover object-center transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
       />
 
-      {/* Soft Paper-tinted wash on the left so the card sits on a clean
-          surface without darkening the scene. Fades to transparent
-          across the panel so the photo reads naturally on the right. */}
+      {/* Black gradient overlay matching the hero — top-down for consistency */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-paper/85 via-paper/40 to-transparent max-[768px]:bg-gradient-to-b max-[768px]:from-paper/90 max-[768px]:via-paper/30 max-[768px]:to-transparent"
+        className="absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(180deg,
+              rgba(0,0,0,0.55) 0%,
+              rgba(0,0,0,0.3) 40%,
+              rgba(0,0,0,0.1) 100%)
+          `,
+        }}
       />
 
-      {/* Content — soft white glass card with navy text */}
+      {/* Content — eyebrow rectangle floats above the glass card */}
       <div className="relative z-[1] flex min-h-[inherit] items-center">
-        <div className="container-1140 flex w-full py-20 max-[768px]:py-16 max-[480px]:py-12">
+        <div className="container-1140 flex w-full py-28 max-[1024px]:py-24 max-[768px]:py-20 max-[480px]:py-14">
           <Reveal>
-            <div className="max-w-[520px] rounded-lg border border-warm-gray bg-white/85 p-8 shadow-[0_18px_48px_rgba(10,47,79,0.12)] backdrop-blur-md max-[480px]:p-6">
+            <div className="max-w-[520px]">
               <p
-                className="mb-3 inline-flex items-center gap-2 rounded-full bg-gold/10 px-2.5 py-1 font-mono text-[11px] font-semibold uppercase text-gold-dark"
-                style={{ letterSpacing: "0.18em" }}
+                className="mb-5 inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/12 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-white shadow-[0_6px_20px_rgba(0,0,0,0.18)] backdrop-blur-md"
+                style={{ letterSpacing: "0.18em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
               >
                 <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
                 {`0${index + 1} · ${division.tagline}`}
               </p>
 
+              <div className="rounded-lg border border-warm-gray bg-white/85 p-8 shadow-[0_18px_48px_rgba(10,47,79,0.18)] backdrop-blur-md max-[480px]:p-6">
               <h3
                 className="mb-4 font-[family-name:var(--font-display)] font-black text-navy"
                 style={{
@@ -152,6 +159,7 @@ function ServicePanel({
                 className="sr-only"
                 data-accent={accentHex}
               />
+              </div>
             </div>
           </Reveal>
         </div>
