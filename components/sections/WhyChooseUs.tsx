@@ -4,11 +4,12 @@ import { STATS } from "@/lib/data/stats";
 import { Reveal } from "@/components/animations/Reveal";
 
 /**
- * Why choose us panel for template trust-building content.
+ * Why choose Owen — full-bleed photo of an Owen tech at work, paired with
+ * trust badges from the credentials data. Followed by the 4-cell stats bar.
  */
 export function WhyChooseUs() {
   return (
-    <section id="why-choose-us" aria-label="Why choose this company" className="bg-navy">
+    <section id="why-choose-us" aria-label="Why choose Owen Plumbing & Drain" className="bg-navy">
       <article
         className={[
           "group relative isolate overflow-hidden",
@@ -17,8 +18,8 @@ export function WhyChooseUs() {
         ].join(" ")}
       >
         <Image
-          src="/images/safety.jpg"
-          alt="Crew member using safe and professional work practices"
+          src="/images/owen-technician.png"
+          alt="Owen Plumbing & Drain technician working under a kitchen sink"
           fill
           sizes="100vw"
           className="object-cover object-center transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
@@ -26,11 +27,11 @@ export function WhyChooseUs() {
 
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/20 max-[768px]:bg-[linear-gradient(to_bottom,rgba(15,32,64,0.92)_0%,rgba(15,32,64,0.65)_28%,rgba(15,32,64,0.55)_55%,rgba(15,32,64,0.8)_100%)]"
+          className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy/75 to-navy/25 max-[768px]:bg-[linear-gradient(to_bottom,rgba(6,30,51,0.95)_0%,rgba(10,47,79,0.65)_28%,rgba(10,47,79,0.55)_55%,rgba(6,30,51,0.85)_100%)]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 via-transparent to-transparent"
         />
 
         <div className="relative z-[1] flex min-h-[inherit] items-center">
@@ -38,25 +39,27 @@ export function WhyChooseUs() {
             <Reveal>
               <div className="max-w-[560px]">
                 <p
-                  className="mb-3 text-[10px] font-semibold uppercase text-gold"
-                  style={{ letterSpacing: "0.22em" }}
+                  className="mb-3 font-mono text-[11px] font-medium uppercase text-gold-light"
+                  style={{ letterSpacing: "0.18em" }}
                 >
-                  Why Choose Us
+                  Why Owen
                 </p>
                 <h2
                   className="mb-5 font-[family-name:var(--font-display)] font-black text-white"
                   style={{
                     fontSize: "clamp(28px, 3.6vw, 44px)",
-                    lineHeight: 1.1,
-                    letterSpacing: "-0.015em",
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.01em",
                   }}
                 >
-                  Built for trust, speed, and reliable service.
+                  Licensed, insured,
+                  <br />
+                  and on time.
                 </h2>
-                <p className="text-[15px] leading-[1.75] text-white/75 max-[480px]:text-[14px]">
-                  Use this section to explain your local reputation, safety standards, and
-                  quality guarantees. Keep this copy short, specific, and outcome-focused
-                  so visitors understand why they should contact you now.
+                <p className="text-[15.5px] leading-[1.7] text-white/75 max-[480px]:text-[14px]">
+                  Three things that matter, in seven words. We diagnose first, write the
+                  price, and only run equipment with your sign-off — so the number on the
+                  invoice is the number we said in the driveway.
                 </p>
               </div>
             </Reveal>
@@ -96,8 +99,8 @@ export function WhyChooseUs() {
                   {stat.number}
                 </div>
                 <div
-                  className="mt-[6px] text-[10px] font-medium uppercase text-white/40 max-[480px]:text-[9px]"
-                  style={{ letterSpacing: "0.12em" }}
+                  className="mt-[6px] font-mono text-[10px] font-medium uppercase text-white/45 max-[480px]:text-[9px]"
+                  style={{ letterSpacing: "0.14em" }}
                 >
                   {stat.label}
                 </div>
@@ -122,10 +125,10 @@ function WhyBadge({
   sub: string;
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-white/[0.08] bg-navy/75 px-5 py-[18px] transition-colors duration-200 hover:bg-navy/85">
+    <div className="flex items-center gap-4 rounded-md border border-white/[0.08] bg-navy-deep/75 px-5 py-[18px] transition-colors duration-200 hover:bg-navy-deep/90">
       <div
-        className={`min-w-[72px] shrink-0 font-[family-name:var(--font-display)] font-bold leading-none text-gold ${
-          smallValue ? "text-[16px] leading-[1.2]" : "text-[24px]"
+        className={`min-w-[80px] shrink-0 font-[family-name:var(--font-display)] font-bold leading-none text-gold-light ${
+          smallValue ? "text-[18px] leading-[1.2]" : "text-[26px]"
         }`}
       >
         {value.split("\n").map((line, i) => (
@@ -134,7 +137,7 @@ function WhyBadge({
       </div>
       <div>
         <div className="mb-[2px] text-[14px] font-semibold text-white">{title}</div>
-        <div className="text-[12px] text-white/40">{sub}</div>
+        <div className="text-[12.5px] text-white/55">{sub}</div>
       </div>
     </div>
   );

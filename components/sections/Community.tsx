@@ -2,54 +2,49 @@ import { COMMUNITY } from "@/lib/data/community";
 import { Reveal } from "@/components/animations/Reveal";
 
 /**
- * Community & giving back. Light offwhite section with a 3-card grid.
- * Matches legacy .community section.
+ * Heritage / community panel — quiet Mist surface.
  */
 export function Community() {
   return (
-    <section id="community" className="bg-offwhite py-20 max-[768px]:py-12">
+    <section id="heritage" className="bg-mist py-24 max-[768px]:py-16">
       <div className="container-1140">
         <Reveal>
           <p
-            className="mb-2 text-[10px] font-semibold uppercase text-gold-dark"
-            style={{ letterSpacing: "0.22em" }}
+            className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+            style={{ letterSpacing: "0.18em" }}
           >
-            Community & Giving Back
+            Heritage &amp; Community
           </p>
           <h2
             className="mb-4 font-[family-name:var(--font-display)] font-black text-navy"
             style={{
-              fontSize: "clamp(26px, 2.8vw, 34px)",
-              lineHeight: 1.15,
+              fontSize: "clamp(26px, 3vw, 40px)",
+              lineHeight: 1.05,
               letterSpacing: "-0.01em",
             }}
           >
-            We&apos;ve always been part
-            <br />
-            of this community.
+            Local plumbing, the long way.
           </h2>
-          <p className="mb-8 max-w-[560px] text-[15px] leading-[1.75] text-muted">
-            Use this section to highlight local involvement, sponsorships, and charitable
-            work that build trust in your service area.
+          <p className="mb-10 max-w-[600px] text-[15.5px] leading-[1.7] text-slate">
+            Same family, same community, same handshake. We answer the phone in Corpus
+            Christi — and we&rsquo;ve been answering it since 1976.
           </p>
         </Reveal>
 
         <Reveal
           stagger
-          className="grid grid-cols-3 gap-4 max-[768px]:grid-cols-1 max-[768px]:gap-3"
+          className="grid grid-cols-3 gap-5 max-[768px]:grid-cols-1 max-[768px]:gap-4"
         >
           {COMMUNITY.map((card) => (
             <div
               key={card.title}
-              className="rounded-xl border border-warm-gray bg-white p-6 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-md"
+              className="rounded-md border border-warm-gray bg-paper p-7 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-md"
             >
-              <div className="mb-2 font-[family-name:var(--font-display)] text-[28px] font-bold leading-none text-gold">
+              <div className="mb-3 font-[family-name:var(--font-display)] text-[36px] font-black leading-none text-gold">
                 {card.number}
               </div>
-              <div className="mb-[6px] text-[14px] font-semibold text-navy">
-                {card.title}
-              </div>
-              <p className="text-[12px] leading-[1.65] text-muted">{card.description}</p>
+              <div className="mb-2 text-[15px] font-bold text-navy">{card.title}</div>
+              <p className="text-[13.5px] leading-[1.65] text-slate">{card.description}</p>
             </div>
           ))}
         </Reveal>

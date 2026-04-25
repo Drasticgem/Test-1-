@@ -2,49 +2,85 @@ import { BUSINESS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 /**
- * Two-line wordmark + bolt mark.
- * Top line renders BUSINESS.shortName, bottom line renders BUSINESS.tagline.
- * Swap the SVG path or colors during client customization.
+ * Owen Plumbing & Drain wordmark.
+ *
+ * Per brand guide §01: stacked lockup with EST. 1976 framing the copper
+ * water-drop, the heavy slab "OWEN" wordmark, and the "— PLUMBING & DRAIN —"
+ * dashed sub-rule. Two surface variants:
+ *   tone="dark"  — for use on Tide / dark photo backgrounds (white text)
+ *   tone="light" — for use on Paper / Mist surfaces (Tide text)
  */
 type LogoProps = {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
+  tone?: "dark" | "light";
   className?: string;
 };
 
-export function Logo({ size = "md", className }: LogoProps) {
-  const boltSize = size === "md" ? 28 : 24;
+export function Logo({ size = "md", tone = "dark", className }: LogoProps) {
+  const isLight = tone === "light";
+  const word = size === "lg" ? 32 : size === "md" ? 22 : 18;
+  const drop = size === "lg" ? 18 : size === "md" ? 13 : 11;
+  const sub = size === "lg" ? 9 : size === "md" ? 7.5 : 7;
+  const est = size === "lg" ? 9 : size === "md" ? 7.5 : 7;
+  const dash = size === "lg" ? 18 : size === "md" ? 12 : 10;
+
+  const wordColor = isLight ? "text-navy" : "text-white";
+  const subColor = isLight ? "text-navy" : "text-white";
+  const dropColor = isLight ? "text-gold" : "text-gold-light";
+  const dashBg = isLight ? "bg-gold" : "bg-gold-light";
 
   return (
-    <span className={cn("flex shrink-0 items-center gap-[10px]", className)}>
-      <svg
-        width={boltSize}
-        height={boltSize}
-        viewBox="0 0 52 52"
-        fill="none"
-        aria-hidden="true"
-        className="shrink-0"
+    <span
+      className={cn(
+        "inline-flex shrink-0 flex-col items-center leading-none",
+        className,
+      )}
+      aria-label={`${BUSINESS.name} — Established ${BUSINESS.founded}`}
+    >
+      {/* EST. (drop) 1976 */}
+      <span
+        className={cn(
+          "flex items-center justify-center gap-[10px] font-[family-name:var(--font-display)] font-bold uppercase",
+          isLight ? "text-navy" : "text-white",
+        )}
+        style={{ fontSize: `${est}px`, letterSpacing: "0.22em" }}
       >
-        <polygon
-          points="26,4 36,16 32,16 42,30 28,30 34,44 14,24 24,24 18,12 28,12"
-          fill="#D4A83A"
-        />
-      </svg>
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-[family-name:var(--font-display)] font-bold text-white",
-            size === "md" ? "text-[16px] max-[480px]:text-[14px]" : "text-[15px]",
-          )}
-          style={{ letterSpacing: "0.1em" }}
+        <span>EST.</span>
+        <svg
+          width={drop}
+          height={drop * 1.4}
+          viewBox="0 0 24 34"
+          fill="currentColor"
+          aria-hidden="true"
+          className={dropColor}
         >
-          {BUSINESS.shortName}
-        </span>
-        <span
-          className="mt-[3px] font-[family-name:var(--font-body)] text-[8px] font-semibold text-gold"
-          style={{ letterSpacing: "0.25em" }}
-        >
-          {BUSINESS.tagline}
-        </span>
+          <path d="M12 0C12 0 0 14 0 22a12 12 0 0 0 24 0C24 14 12 0 12 0Z" />
+        </svg>
+        <span>1976</span>
+      </span>
+
+      {/* OWEN */}
+      <span
+        className={cn(
+          "mt-[3px] font-[family-name:var(--font-display)] font-black",
+          wordColor,
+        )}
+        style={{ fontSize: `${word}px`, letterSpacing: "0.01em", lineHeight: 0.95 }}
+      >
+        OWEN
+      </span>
+
+      {/* — PLUMBING & DRAIN — */}
+      <span
+        className={cn(
+          "mt-[5px] flex items-center justify-center gap-[8px] font-bold uppercase",
+          subColor,
+        )}
+        style={{ fontSize: `${sub}px`, letterSpacing: "0.26em" }}
+      >
+        <span aria-hidden="true" className={cn("h-[1.5px]", dashBg)} style={{ width: `${dash}px` }} />
+        <span>Plumbing &amp; Drain</span>
+        <span aria-hidden="true" className={cn("h-[1.5px]", dashBg)} style={{ width: `${dash}px` }} />
       </span>
     </span>
   );

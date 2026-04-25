@@ -1,70 +1,53 @@
 /**
- * Example divisions used by the demo site.
- * Consumed by both the Divisions section (dark navy cards right below hero)
- * and the Services grid (light cards). Single source of truth.
+ * Owen Plumbing & Drain — homepage service panels.
+ * Three full-bleed photo panels, each tied to a real Owen image so the
+ * brand identity reads consistently across the page.
  */
 export type DivisionAccent = "gold" | "ac-blue" | "tele-green" | "ck-terra";
 
 export interface Division {
   slug: string;
   name: string;
-  /** Short tagline used inside hero/division cards. */
   tagline: string;
-  /** Longer one-sentence description for the services grid. */
   description: string;
-  /** Small pill label on the right side of the dark division card. */
   badge: string;
-  /** Link label on the services grid card. */
   exploreLabel: string;
-  /** Semantic accent token — matches a color in the theme. */
   accent: DivisionAccent;
-  /** Full-bleed background photo used in the Services section. */
   heroImage: string;
 }
 
 export const DIVISIONS: Division[] = [
   {
-    slug: "electric",
-    name: "Premier Trades",
-    tagline: "Industrial, commercial & residential",
+    slug: "residential-plumbing",
+    name: "Residential Plumbing",
+    tagline: "Repairs · fixtures · repipes",
     description:
-      "Industrial, commercial, and residential electrical — from DCS and solar to knob-and-tube replacement. Licensed, bonded, insured.",
-    badge: "Since 1920",
-    exploreLabel: "Explore electrical",
+      "Leaks, fixtures, repipes, and remodels across the Coastal Bend. We diagnose first, write the price, and leave the job site cleaner than we found it.",
+    badge: "Same-day service",
+    exploreLabel: "See plumbing services",
     accent: "gold",
-    heroImage: "/images/services/electric.jpg",
+    heroImage: "/images/owen-technician.png",
   },
   {
-    slug: "ac-heating",
-    name: "Climate & Comfort",
-    tagline: "Installation, service & fabrication",
+    slug: "drain-sewer",
+    name: "Drain & Sewer",
+    tagline: "Cabling · jetting · camera-located",
     description:
-      "Full-service HVAC — installation, maintenance, repair, and custom fabrication for all major brands. Residential and commercial.",
-    badge: "All brands",
-    exploreLabel: "Explore HVAC",
+      "Cabling, hydro-jetting, and camera-located sewer work for homes built in '76 or last year. Trenchless options where they fit, dig-and-replace where they don't.",
+    badge: "Camera-located",
+    exploreLabel: "See drain services",
     accent: "ac-blue",
-    heroImage: "/images/services/ac-heating.jpg",
+    heroImage: "/images/safety.jpg",
   },
   {
-    slug: "telecom",
-    name: "Smart Systems",
-    tagline: "Fiber, phone & security systems",
+    slug: "emergency-service",
+    name: "24/7 Emergency",
+    tagline: "Burst pipes · backups · no-water calls",
     description:
-      "Fiber optic, structured cabling, phone systems, security & surveillance. Wired and wireless solutions for any facility.",
-    badge: "Wired & wireless",
-    exploreLabel: "Explore telecom",
+      "Burst pipe? Call (361) 371-8163. We answer 24/7 with a tech on call for the calls that can't wait — burst lines, sewage backups, and no-water Saturdays.",
+    badge: "Answered 24/7",
+    exploreLabel: "Call the emergency line",
     accent: "tele-green",
-    heroImage: "/images/services/telecom.jpg",
-  },
-  {
-    slug: "custom-cabinetry",
-    name: "Coastal Kitchens",
-    tagline: "Custom woodwork & cabinetry",
-    description:
-      "Highest quality custom woodwork for homes and businesses. Remodels, new construction, furniture, and full kitchen builds.",
-    badge: "Custom builds",
-    exploreLabel: "Explore cabinetry",
-    accent: "ck-terra",
-    heroImage: "/images/services/coastal-kitchens.jpg",
+    heroImage: "/images/owen-van.png",
   },
 ];

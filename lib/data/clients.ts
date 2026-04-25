@@ -1,8 +1,8 @@
 export const CLIENTS: string[] = [
-  "Regional General Contractor",
-  "Property Management Group",
-  "Local School District",
-  "Healthcare Clinic Network",
-  "Manufacturing Facility",
-  "Small Business Portfolio",
+  "Coastal Bend Homeowners",
+  "Local General Contractors",
+  "Property Management Groups",
+  "Restaurant Operators",
+  "School & Church Facilities",
+  "Small Business Portfolios",
 ];

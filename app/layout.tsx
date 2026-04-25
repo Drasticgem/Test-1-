@@ -1,27 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import { Lora, Sora } from "next/font/google";
+import { Roboto_Slab, DM_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BUSINESS } from "@/lib/constants";
 import "./globals.css";
 
-const headingFont = Lora({
+const headingFont = Roboto_Slab({
   subsets: ["latin"],
+  weight: ["400", "500", "700", "800", "900"],
   variable: "--font-display",
 });
 
-const bodyFont = Sora({
+const bodyFont = DM_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   variable: "--font-body",
 });
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Plumber",
   name: BUSINESS.name,
   telephone: BUSINESS.phone,
   email: BUSINESS.email,
+  url: "https://www.owenplumbing.com",
+  founder: BUSINESS.founder,
+  foundingDate: String(BUSINESS.founded),
+  areaServed: BUSINESS.areaServed,
   address: {
     "@type": "PostalAddress",
     streetAddress: BUSINESS.address.street,
@@ -30,12 +36,13 @@ const localBusinessJsonLd = {
     postalCode: BUSINESS.address.zip,
     addressCountry: "US",
   },
+  openingHours: "Mo-Fr 08:00-17:00",
 };
 
 export const metadata: Metadata = {
-  title: `Home | ${BUSINESS.name} — ${BUSINESS.address.city}, ${BUSINESS.address.state}`,
+  title: `${BUSINESS.name} — Plumbing in the Coastal Bend since ${BUSINESS.founded}`,
   description:
-    "Reusable Next.js starter template for local businesses. Replace branding, services, and contact details for each new client project.",
+    "Honest work. Clean solutions. Family-owned plumbing and drain service across Corpus Christi and the Coastal Bend. Master Lic. M8552.",
 };
 
 export const viewport: Viewport = {
