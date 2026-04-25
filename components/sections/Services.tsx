@@ -71,7 +71,10 @@ export function Services() {
   );
 }
 
-/* ── A single full-bleed photo panel ── */
+/* ── A single panel: full-bleed photo with a paper wash bleeding in
+   from the left (solid → clear) so content sits cleanly on the paper
+   side while the photo reads through on the right. On narrow screens
+   the wash flips to top-down so the photo still breathes below. ── */
 function ServicePanel({
   division,
   index,
@@ -89,12 +92,12 @@ function ServicePanel({
   return (
     <article
       className={[
-        "group relative isolate overflow-hidden",
-        "min-h-[760px] max-[1024px]:min-h-[680px] max-[768px]:min-h-[760px] max-[480px]:min-h-[700px]",
+        "group relative isolate overflow-hidden bg-paper",
+        "min-h-[640px] max-[1024px]:min-h-[760px] max-[480px]:min-h-[700px]",
         index > 0 ? "border-t border-warm-gray" : "",
       ].join(" ")}
     >
-      {/* Background photo — left visible and natural */}
+      {/* Full-bleed photo */}
       <Image
         src={division.heroImage}
         alt={`${division.name} — ${division.tagline}`}
@@ -104,82 +107,70 @@ function ServicePanel({
         className="object-cover object-center transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
       />
 
-      {/* Black gradient overlay matching the hero — top-down for consistency */}
+      {/* Paper wash — desktop: horizontal (solid left → clear right) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0"
+        className="absolute inset-0 max-[1024px]:hidden"
         style={{
-          background: `
-            linear-gradient(180deg,
-              rgba(0,0,0,0.55) 0%,
-              rgba(0,0,0,0.3) 40%,
-              rgba(0,0,0,0.1) 100%)
-          `,
+          background:
+            "linear-gradient(90deg, var(--color-paper) 0%, var(--color-paper) 38%, rgba(251,251,249,0.92) 50%, rgba(251,251,249,0.55) 62%, rgba(251,251,249,0) 78%)",
         }}
       />
 
-      {/* Layout — flex column stretches the full panel; the eyebrow pill
-          pins to the top, and the white card / CTA pin to the bottom.
-          Desktop (≥1024px) places the CTA bottom-right next to the card;
-          mobile keeps the CTA inside the card under the description. */}
-      <div className="relative z-[1] flex min-h-[inherit] flex-col">
-        <div className="container-1140 flex w-full flex-1 flex-col justify-between gap-12 py-12 max-[1024px]:gap-10 max-[1024px]:py-10 max-[768px]:gap-16 max-[768px]:py-8 max-[480px]:gap-12 max-[480px]:py-6">
-          {/* ── Top: glass eyebrow pill (top-left on desktop) ── */}
-          <Reveal mode="fade">
+      {/* Paper wash — mobile/tablet: vertical (solid top → clear bottom) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 hidden max-[1024px]:block"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper) 42%, rgba(251,251,249,0.9) 56%, rgba(251,251,249,0.45) 72%, rgba(251,251,249,0) 88%)",
+        }}
+      />
+
+      {/* Content — left-aligned on the paper side */}
+      <div className="relative z-[1] flex min-h-[inherit] items-center">
+        <div className="container-1140 w-full py-20 max-[1024px]:py-16 max-[480px]:py-12">
+          <Reveal mode="fade" className="block w-full max-w-[560px]">
             <p
-              className="inline-flex w-fit items-center gap-2 rounded-md border border-white/25 bg-white/12 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-white shadow-[0_6px_20px_rgba(0,0,0,0.18)] backdrop-blur-md"
-              style={{ letterSpacing: "0.18em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
+              className="mb-8 inline-flex w-fit items-center gap-2 rounded-md border border-navy/15 bg-paper/70 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-navy max-[480px]:mb-6"
+              style={{ letterSpacing: "0.18em" }}
             >
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
               {`0${index + 1} · ${division.tagline}`}
             </p>
+
+            <h3
+              className="font-[family-name:var(--font-display)] font-black text-navy"
+              style={{
+                fontSize: "clamp(40px, 5.4vw, 72px)",
+                lineHeight: 1.02,
+                letterSpacing: "-0.018em",
+              }}
+            >
+              {division.name}
+            </h3>
+
+            {/* Copper accent bar under the heading */}
+            <div
+              aria-hidden="true"
+              className="mt-6 h-[3px] w-14 rounded-full bg-gold"
+            />
+
+            <p className="mt-6 text-[15.5px] leading-[1.7] text-slate max-[480px]:text-[14px]">
+              {division.description}
+            </p>
+
+            <a
+              href={ctaHref}
+              className="mt-9 inline-flex items-center gap-[10px] rounded-md bg-gold px-6 py-4 text-[14px] font-semibold text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark max-[480px]:mt-7"
+              style={{ color: "#ffffff" }}
+            >
+              {division.exploreLabel}
+              <ArrowRight className="h-4 w-4" strokeWidth={2.25} aria-hidden="true" />
+            </a>
+
+            <span aria-hidden="true" className="sr-only" data-accent={accentHex} />
           </Reveal>
-
-          {/* ── Bottom row: white card (left) + standalone CTA (right, ≥1024px) ── */}
-          <div className="flex items-end justify-between gap-8 max-[1024px]:flex-col max-[1024px]:items-stretch max-[1024px]:gap-6">
-            <Reveal mode="fade" className="w-full max-w-[620px] max-[1024px]:max-w-none">
-              <div className="rounded-lg border border-warm-gray bg-white/85 p-10 shadow-[0_18px_48px_rgba(10,47,79,0.18)] backdrop-blur-md max-[1024px]:p-8 max-[480px]:p-6">
-                <h3
-                  className="mb-5 font-[family-name:var(--font-display)] font-black text-navy"
-                  style={{
-                    fontSize: "clamp(28px, 3.6vw, 44px)",
-                    lineHeight: 1.08,
-                    letterSpacing: "-0.015em",
-                  }}
-                >
-                  {division.name}
-                </h3>
-
-                <p className="text-[15px] leading-[1.7] text-slate max-[480px]:text-[14px]">
-                  {division.description}
-                </p>
-
-                {/* Mobile / tablet CTA — kept inside the card so the
-                    primary action stays in reach on small screens. */}
-                <a
-                  href={ctaHref}
-                  className="mt-7 hidden items-center gap-[8px] rounded-md bg-gold px-5 py-3 text-[12.5px] font-bold uppercase text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark max-[1024px]:inline-flex"
-                  style={{ letterSpacing: "0.1em", color: "#ffffff" }}
-                >
-                  {division.exploreLabel}
-                  <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-                </a>
-                <span aria-hidden="true" className="sr-only" data-accent={accentHex} />
-              </div>
-            </Reveal>
-
-            {/* Desktop CTA — floats bottom-right, separate from the card */}
-            <Reveal mode="fade" className="shrink-0 max-[1024px]:hidden">
-              <a
-                href={ctaHref}
-                className="inline-flex items-center gap-[8px] rounded-md bg-gold px-6 py-4 text-[13px] font-bold uppercase text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
-                style={{ letterSpacing: "0.1em", color: "#ffffff" }}
-              >
-                {division.exploreLabel}
-                <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              </a>
-            </Reveal>
-          </div>
         </div>
       </div>
     </article>

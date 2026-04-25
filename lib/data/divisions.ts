@@ -24,7 +24,7 @@ export const DIVISIONS: Division[] = [
     description:
       "Leaks, fixtures, repipes, and remodels across the Coastal Bend. We diagnose first, write the price, and leave the job site cleaner than we found it.",
     badge: "Same-day service",
-    exploreLabel: "See plumbing services",
+    exploreLabel: "See Plumbing Services",
     accent: "gold",
     heroImage: "/images/owen-technician.png",
   },
@@ -35,7 +35,7 @@ export const DIVISIONS: Division[] = [
     description:
       "Cabling, hydro-jetting, and camera-located sewer work for homes built in '76 or last year. Trenchless options where they fit, dig-and-replace where they don't.",
     badge: "Camera-located",
-    exploreLabel: "See drain services",
+    exploreLabel: "See Drain Services",
     accent: "ac-blue",
     heroImage: "/images/safety.jpg",
   },
@@ -46,7 +46,7 @@ export const DIVISIONS: Division[] = [
     description:
       "Burst pipe? Call (361) 371-8163. We answer 24/7 with a tech on call for the calls that can't wait — burst lines, sewage backups, and no-water Saturdays.",
     badge: "Answered 24/7",
-    exploreLabel: "Call the emergency line",
+    exploreLabel: "Call the Emergency Line",
     accent: "tele-green",
     heroImage: "/images/owen-van.png",
   },
