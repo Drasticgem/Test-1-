@@ -35,7 +35,7 @@ export function CTA() {
             </p>
             <a
               href={BUSINESS.phoneHref}
-              className="inline-flex items-center gap-2 rounded-md bg-gold px-7 py-[14px] text-[14px] font-bold text-white shadow-[0_8px_24px_rgba(194,104,42,0.35)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
+              className="copper-pulse inline-flex items-center gap-2 rounded-md bg-gold px-7 py-[14px] text-[14px] font-bold text-white shadow-[0_8px_24px_rgba(194,104,42,0.35)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
               style={{ letterSpacing: "0.06em" }}
             >
               <svg

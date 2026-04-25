@@ -20,16 +20,22 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-warm-gray bg-paper/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-warm-gray bg-paper/92 backdrop-blur-md">
       <nav
         aria-label="Primary"
-        className="container-1140 flex h-[72px] items-center justify-between gap-4"
+        className="container-1140 flex h-[88px] items-center justify-between gap-4"
       >
         <Link href="/" aria-label={BUSINESS.name} className="shrink-0">
-          <Logo size="sm" tone="light" />
+          {/* Horizontal primary lockup 2 — sized down for mobile so the
+              right-hand "PLUMBING & DRAIN" stack still reads cleanly. */}
+          <span className="hidden sm:inline-flex">
+            <Logo variant="horizontal" size="md" tone="light" />
+          </span>
+          <span className="sm:hidden">
+            <Logo variant="horizontal" size="sm" tone="light" />
+          </span>
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden items-center gap-7 lg:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
@@ -49,7 +55,6 @@ export function Header() {
           })}
         </div>
 
-        {/* Right cluster — phone + emergency CTA + mobile toggle */}
         <div className="flex items-center gap-3">
           <a
             href={BUSINESS.phoneHref}
@@ -61,7 +66,7 @@ export function Header() {
           </a>
           <a
             href={BUSINESS.phoneHref}
-            className="relative hidden items-center gap-2 rounded-md bg-gold px-4 py-[9px] text-[12px] font-bold uppercase text-white shadow-sm transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark md:inline-flex"
+            className="copper-pulse relative hidden items-center gap-2 rounded-md bg-gold px-4 py-[10px] text-[12px] font-bold uppercase text-white shadow-sm transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark md:inline-flex"
             style={{ letterSpacing: "0.12em" }}
           >
             <span className="relative inline-flex h-2 w-2 items-center justify-center">
@@ -87,7 +92,6 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
       {open && (
         <div className="border-t border-warm-gray bg-paper lg:hidden">
           <div className="container-1140 flex flex-col gap-1 py-3">
@@ -100,9 +104,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     "rounded-md px-3 py-3 text-[14px] font-medium",
-                    active
-                      ? "bg-navy text-white"
-                      : "text-navy/80 hover:bg-mist",
+                    active ? "bg-navy text-white" : "text-navy/80 hover:bg-mist",
                   )}
                 >
                   {link.label}
@@ -111,7 +113,7 @@ export function Header() {
             })}
             <a
               href={BUSINESS.phoneHref}
-              className="mt-2 flex items-center justify-center gap-2 rounded-md bg-gold px-4 py-3 text-[13px] font-bold uppercase text-white"
+              className="copper-pulse mt-2 flex items-center justify-center gap-2 rounded-md bg-gold px-4 py-3 text-[13px] font-bold uppercase text-white"
               style={{ letterSpacing: "0.12em" }}
             >
               <Phone className="h-4 w-4" strokeWidth={2.25} aria-hidden="true" />
