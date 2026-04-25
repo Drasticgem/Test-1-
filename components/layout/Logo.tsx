@@ -86,8 +86,8 @@ function HorizontalLogo({
 
   const wordColor = isLight ? "text-navy" : "text-white";
   const subColor = isLight ? "text-navy" : "text-white";
-  const accent = isLight ? "text-gold" : "text-gold-light";
-  const ruleBg = isLight ? "bg-gold" : "bg-gold-light";
+  const accent = "text-gold";
+  const ruleBg = "bg-gold";
 
   return (
     <span
@@ -180,8 +180,8 @@ function StackedLogo({
   const wordColor = isLight ? "text-navy" : "text-white";
   const subColor = isLight ? "text-navy" : "text-white";
   const tagColor = isLight ? "text-slate" : "text-white/55";
-  const accent = isLight ? "text-gold" : "text-gold-light";
-  const ruleBg = isLight ? "bg-gold" : "bg-gold-light";
+  const accent = "text-gold";
+  const ruleBg = "bg-gold";
 
   return (
     <span

@@ -23,7 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-warm-gray bg-paper/92 backdrop-blur-md">
       <nav
         aria-label="Primary"
-        className="container-1140 flex h-[88px] items-center justify-between gap-4"
+        className="mx-auto flex h-[92px] w-full max-w-[1320px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12"
       >
         <Link href="/" aria-label={BUSINESS.name} className="shrink-0">
           {/* Horizontal primary lockup 2 — sized down for mobile so the
@@ -36,7 +36,7 @@ export function Header() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="hidden items-center gap-9 xl:gap-11 lg:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
@@ -55,7 +55,7 @@ export function Header() {
           })}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 lg:gap-4">
           <a
             href={BUSINESS.phoneHref}
             className="hidden items-center gap-2 text-[13px] font-bold text-gold transition-colors hover:text-gold-dark md:inline-flex"
@@ -81,47 +81,61 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-warm-gray bg-paper text-navy lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-warm-gray bg-paper text-navy transition-[border-color,background-color] duration-300 hover:border-navy/25 lg:hidden"
           >
-            {open ? (
-              <X className="h-5 w-5" aria-hidden="true" />
-            ) : (
-              <Menu className="h-5 w-5" aria-hidden="true" />
-            )}
+            <span className="relative block h-5 w-5">
+              <Menu
+                className={cn(
+                  "absolute inset-0 h-5 w-5 transition-all duration-300",
+                  open ? "scale-75 rotate-45 opacity-0" : "scale-100 rotate-0 opacity-100",
+                )}
+                aria-hidden="true"
+              />
+              <X
+                className={cn(
+                  "absolute inset-0 h-5 w-5 transition-all duration-300",
+                  open ? "scale-100 rotate-0 opacity-100" : "scale-75 -rotate-45 opacity-0",
+                )}
+                aria-hidden="true"
+              />
+            </span>
           </button>
         </div>
       </nav>
 
-      {open && (
-        <div className="border-t border-warm-gray bg-paper lg:hidden">
-          <div className="container-1140 flex flex-col gap-1 py-3">
-            {NAV_LINKS.map((link) => {
-              const active = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "rounded-md px-3 py-3 text-[14px] font-medium",
-                    active ? "bg-navy text-white" : "text-navy/80 hover:bg-mist",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-            <a
-              href={BUSINESS.phoneHref}
-              className="copper-pulse mt-2 flex items-center justify-center gap-2 rounded-md bg-gold px-4 py-3 text-[13px] font-bold uppercase text-white"
-              style={{ letterSpacing: "0.12em" }}
-            >
-              <Phone className="h-4 w-4" strokeWidth={2.25} aria-hidden="true" />
-              Call {BUSINESS.phoneDisplay}
-            </a>
-          </div>
+      <div
+        className={cn(
+          "overflow-hidden border-t border-warm-gray bg-paper transition-all duration-300 ease-out lg:hidden",
+          open ? "max-h-[360px] opacity-100" : "pointer-events-none max-h-0 opacity-0",
+        )}
+      >
+        <div className="container-1140 flex flex-col gap-1 py-3">
+          {NAV_LINKS.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "rounded-md px-3 py-3 text-[14px] font-medium transition-colors",
+                  active ? "bg-navy text-white" : "text-navy/80 hover:bg-mist",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <a
+            href={BUSINESS.phoneHref}
+            className="copper-pulse mt-2 flex items-center justify-center gap-2 rounded-md bg-gold px-4 py-3 text-[13px] font-bold uppercase text-white"
+            style={{ letterSpacing: "0.12em" }}
+          >
+            <Phone className="h-4 w-4" strokeWidth={2.25} aria-hidden="true" />
+            Call {BUSINESS.phoneDisplay}
+          </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }
