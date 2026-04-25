@@ -1,201 +1,171 @@
-import Image from "next/image";
-import { DIVISIONS, type Division } from "@/lib/data/divisions";
-import { Reveal } from "@/components/animations/Reveal";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/animations/Reveal";
 
 /**
- * Services section — header ("Four divisions. One standard.") followed by
- * four full-bleed photo sections (one per division). The header blends
- * directly into the first photo panel (no gap), so the whole block reads
- * as one continuous statement.
+ * Homepage "What we do" section — sits directly under the hero.
  *
- * Each photo section:
- *   - full-bleed next/image background (object-cover)
- *   - dark gradient overlay (stronger on the left, fades right)
- *   - eyebrow, display-font name, short subline, accent-colored CTA
- *   - identical content structure on mobile (stacked, left-aligned)
+ * Light mist surface; heading + description on the left, three white
+ * service cards on the right (Plumbing · Drain Cleaning · Water Heaters).
+ * Cards are flat with a soft shadow per the mockup, not heavy panels.
  */
+const SERVICE_CARDS = [
+  {
+    title: "Plumbing",
+    description: "Repairs, installs, and upgrades done right.",
+    href: "/services",
+    icon: <FaucetIcon />,
+  },
+  {
+    title: "Drain Cleaning",
+    description: "Clear clogs and prevent future problems.",
+    href: "/services",
+    icon: <DrainIcon />,
+  },
+  {
+    title: "Water Heaters",
+    description: "Installation, repair, and replacement.",
+    href: "/services",
+    icon: <WaterHeaterIcon />,
+  },
+] as const;
+
 export function Services() {
   return (
-    <section id="services" aria-label="Our services">
-      {/* ── Header ── */}
-      <div className="bg-white pt-20 pb-14 max-[768px]:pt-12 max-[768px]:pb-10">
-        <div className="container-1140">
-          <Reveal>
-            <div className="flex items-end justify-between gap-6 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-3">
-              <div>
-                <p
-                  className="mb-2 text-[10px] font-semibold uppercase text-gold"
-                  style={{ letterSpacing: "0.22em" }}
-                >
-                  What we do
-                </p>
-                <h2
-                  className="font-[family-name:var(--font-display)] font-black text-navy"
-                  style={{
-                    fontSize: "clamp(26px, 2.8vw, 34px)",
-                    lineHeight: 1.15,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  Plumbing done right.
-                  <br />
-                  Since 1976.
-                </h2>
-              </div>
-              <a
-                href="/services"
-                className="group inline-flex shrink-0 items-center gap-[6px] whitespace-nowrap text-[13px] font-semibold text-gold transition-colors duration-200 hover:text-gold-dark"
-                style={{ letterSpacing: "0.03em" }}
+    <section
+      id="services"
+      aria-label="Services"
+      className="bg-mist py-20 max-[768px]:py-14"
+    >
+      <div className="container-1140">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          <Reveal className="lg:col-span-5">
+            <p
+              className="mb-3 inline-flex items-center gap-3 text-[11px] font-semibold uppercase text-gold"
+              style={{ letterSpacing: "0.22em" }}
+            >
+              What we do
+              <span aria-hidden="true" className="h-px w-10 bg-gold/60" />
+            </p>
+            <h2
+              className="font-[family-name:var(--font-display)] font-black text-navy"
+              style={{
+                fontSize: "clamp(28px, 3.6vw, 44px)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.012em",
+              }}
+            >
+              Services built around
+              <br className="hidden sm:block" />
+              {" "}your home and business.
+            </h2>
+          </Reveal>
+
+          <Reveal stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-3">
+            {SERVICE_CARDS.map((card) => (
+              <article
+                key={card.title}
+                className="flex h-full flex-col rounded-xl bg-white p-6 shadow-[0_2px_12px_rgba(10,47,79,0.06)] ring-1 ring-navy/5 transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(10,47,79,0.10)]"
               >
-                View all services
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-[3px]"
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-              </a>
-            </div>
+                <span className="mb-5 inline-flex h-10 w-10 items-center justify-center text-navy">
+                  {card.icon}
+                </span>
+                <h3
+                  className="mb-2 font-[family-name:var(--font-display)] font-black text-navy"
+                  style={{ fontSize: "20px", lineHeight: 1.2 }}
+                >
+                  {card.title}
+                </h3>
+                <p className="mb-5 text-[14.5px] leading-[1.6] text-slate">
+                  {card.description}
+                </p>
+                <Link
+                  href={card.href}
+                  className="group mt-auto inline-flex items-center gap-[6px] text-[12.5px] font-bold uppercase text-gold transition-colors hover:text-gold-dark"
+                  style={{ letterSpacing: "0.12em" }}
+                  aria-label={`Learn more about ${card.title}`}
+                >
+                  Learn more
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-[3px]"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
+                </Link>
+              </article>
+            ))}
           </Reveal>
         </div>
-      </div>
-
-      {/* ── Four stacked photo panels ── */}
-      <div className="bg-navy">
-        {DIVISIONS.map((division, i) => (
-          <ServicePanel
-            key={division.slug}
-            division={division}
-            index={i}
-            priority={i === 0}
-          />
-        ))}
       </div>
     </section>
   );
 }
 
-/* ── A single full-bleed photo panel ── */
-function ServicePanel({
-  division,
-  index,
-  priority,
-}: {
-  division: Division;
-  index: number;
-  priority: boolean;
-}) {
-  const accentHex = accentColorHex(division.accent);
+/* ── Inline icons matched to the mockup's simple navy line style. ── */
 
+function FaucetIcon() {
   return (
-    <article
-      className={[
-        "group relative isolate overflow-hidden",
-        // Height — comfortable on desktop, taller on mobile so the photo breathes
-        "min-h-[460px] max-[1024px]:min-h-[440px] max-[768px]:min-h-[620px] max-[480px]:min-h-[580px]",
-        // Seam between stacked panels
-        index > 0 ? "border-t border-white/5" : "",
-      ].join(" ")}
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
     >
-      {/* Background photo */}
-      <Image
-        src={division.heroImage}
-        alt={`${division.name} — ${division.tagline}`}
-        fill
-        priority={priority}
-        sizes="100vw"
-        className="object-cover object-center transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
-      />
-
-      {/* Shadow overlay — dark on the left where text sits, fades to the right.
-          On mobile we use a vertical sandwich gradient: dark at top and bottom
-          where the text groups live, transparent through the middle so the
-          background photo reads cleanly. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/20 max-[768px]:bg-[linear-gradient(to_bottom,rgba(15,32,64,0.9)_0%,rgba(15,32,64,0.55)_22%,rgba(15,32,64,0.15)_50%,rgba(15,32,64,0.55)_78%,rgba(15,32,64,0.9)_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"
-      />
-
-
-      {/* Content — desktop: vertically centered single block.
-          Mobile: column stretches full panel height, eyebrow+title pinned
-          near the top, description+CTA pinned near the bottom, with a
-          flex spacer in between so the photo breathes through the middle. */}
-      <div className="relative z-[1] flex min-h-[inherit] items-center max-[768px]:items-stretch">
-        <div className="container-1140 flex w-full flex-col py-16 max-[768px]:py-14 max-[480px]:py-12">
-          <Reveal>
-            <div className="max-w-[560px]">
-              <p
-                className="mb-3 font-mono text-[11px] font-medium uppercase"
-                style={{
-                  letterSpacing: "0.18em",
-                  color: accentHex,
-                }}
-              >
-                {`0${index + 1} · ${division.tagline}`}
-              </p>
-
-              <h3
-                className="font-[family-name:var(--font-display)] font-black text-white"
-                style={{
-                  fontSize: "clamp(30px, 4.2vw, 52px)",
-                  lineHeight: 1.08,
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                {division.name}
-              </h3>
-            </div>
-          </Reveal>
-
-          {/* Spacer — only grows on mobile so the photo is visible through
-              the middle of the panel. Collapses on desktop so the two text
-              groups read as one block. */}
-          <div
-            aria-hidden="true"
-            className="hidden max-[768px]:block max-[768px]:flex-1 max-[768px]:min-h-[80px]"
-          />
-
-          <Reveal>
-            <div className="max-w-[520px] mt-4 max-[768px]:mt-0">
-              <p className="text-[15px] leading-[1.65] text-white/75 max-[480px]:text-[14px]">
-                {division.description}
-              </p>
-
-              <a
-                href={division.slug === "emergency-service" ? "tel:+13613718163" : "/services"}
-                className="group/cta mt-7 inline-flex items-center gap-[6px] text-[13px] font-bold uppercase transition-[gap] duration-200 hover:gap-[10px] max-[768px]:mt-6"
-                style={{
-                  letterSpacing: "0.12em",
-                  color: accentHex,
-                  transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                }}
-              >
-                {division.exploreLabel}
-                <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </article>
+      <path d="M6 13h6" />
+      <path d="M9 13v3a3 3 0 0 0 3 3h0" />
+      <path d="M12 19v2" />
+      <path d="M9 21h6" />
+      <path d="M14 13h6a3 3 0 0 1 3 3v2" />
+      <path d="M20 8v5" />
+      <path d="M17 8h6" />
+      <circle cx="23.5" cy="20" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
   );
 }
 
-/* ── Accent token → hex (Owen palette: Copper-led with neutral support) ── */
-function accentColorHex(accent: Division["accent"]) {
-  switch (accent) {
-    case "gold":
-      return "#C2682A"; // Copper — primary action
-    case "ac-blue":
-      return "#C5D2DC"; // soft Mist — cool, restrained
-    case "tele-green":
-      return "#E5A472"; // Copper soft — secondary action
-    case "ck-terra":
-      return "#DDD1BD"; // warm sand — heritage neutral
-  }
+function DrainIcon() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <ellipse cx="16" cy="16" rx="11" ry="5" />
+      <path d="M8 14.5h16" />
+      <path d="M8 17.5h16" />
+    </svg>
+  );
+}
+
+function WaterHeaterIcon() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="8" y="6" width="16" height="22" rx="3" />
+      <path d="M11 11h10" />
+      <circle cx="16" cy="20" r="2" />
+      <path d="M14 6V4" />
+      <path d="M18 6V4" />
+    </svg>
+  );
 }
