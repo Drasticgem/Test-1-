@@ -91,4 +91,41 @@
     margin-inline: auto;
     padding-inline: clamp(20px, 4vw, 40px);
   }
+
+  /*
+   * Subtle Copper halo pulse for primary CTAs (Get a Free Estimate,
+   * 24/7 Emergency, Call). Uses an ::after ring so the button's own
+   * shadow + transform stay untouched. Per brand §07: reserved for
+   * primary CTAs only — never on body buttons or inputs.
+   */
+  .copper-pulse {
+    position: relative;
+  }
+  .copper-pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 0 0 0 0 rgba(194, 104, 42, 0.55);
+    animation: copper-halo 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes copper-halo {
+    0% {
+      box-shadow: 0 0 0 0 rgba(194, 104, 42, 0.55);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(194, 104, 42, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(194, 104, 42, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .copper-pulse::after {
+      animation: none;
+    }
+  }
 }
