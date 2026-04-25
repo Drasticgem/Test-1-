@@ -29,16 +29,16 @@ export function Hero() {
         className="object-cover object-center"
       />
 
-      {/* Tide-based gradient overlay for strong text contrast on the hero image */}
+      {/* Black gradient overlay for strong text contrast on the hero image */}
       <div
         aria-hidden="true"
         className="absolute inset-0 z-[1]"
         style={{
           background: `
             linear-gradient(180deg,
-              rgba(10,47,79,0.7) 0%,
-              rgba(10,47,79,0.4) 40%,
-              rgba(10,47,79,0.15) 100%)
+              rgba(0,0,0,0.7) 0%,
+              rgba(0,0,0,0.4) 40%,
+              rgba(0,0,0,0.15) 100%)
           `,
         }}
       />
