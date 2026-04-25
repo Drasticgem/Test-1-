@@ -95,7 +95,7 @@ export function Hero() {
         </div>
 
         <div
-          className="inline-flex w-fit items-center rounded-full border border-white/70 bg-white/65 px-2 py-[10px] shadow-[0_10px_30px_rgba(10,47,79,0.10)] backdrop-blur-md max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-2 max-[640px]:rounded-2xl max-[640px]:px-3 max-[640px]:py-3"
+          className="inline-flex w-fit items-center rounded-md border border-white/70 bg-white/65 px-2 py-[10px] shadow-[0_10px_30px_rgba(10,47,79,0.10)] backdrop-blur-md max-[640px]:w-full max-[640px]:max-w-[420px] max-[640px]:flex-col max-[640px]:items-stretch max-[640px]:gap-0 max-[640px]:p-1.5"
         >
           <TrustItem icon={<ShieldCheck className="h-[20px] w-[20px]" strokeWidth={1.75} aria-hidden="true" />}>
             Master Lic. M8552
@@ -114,7 +114,7 @@ export function Hero() {
 
 function TrustItem({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-[10px] px-3 text-navy">
+    <div className="flex items-center gap-[10px] px-3 text-navy max-[640px]:w-full max-[640px]:justify-center max-[640px]:px-2 max-[640px]:py-2.5">
       <span className="grid h-7 w-7 place-items-center text-navy">{icon}</span>
       <span className="text-[13px] font-semibold tracking-[0.005em] text-navy">{children}</span>
     </div>
@@ -125,7 +125,7 @@ function PillDivider() {
   return (
     <span
       aria-hidden="true"
-      className="mx-1 h-6 w-px bg-navy/15 max-[640px]:hidden"
+      className="mx-1 h-6 w-px bg-navy/15 max-[640px]:mx-0 max-[640px]:h-px max-[640px]:w-full max-[640px]:bg-navy/10"
     />
   );
 }

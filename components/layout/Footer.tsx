@@ -52,14 +52,14 @@ export function Footer() {
       {/* 2. Footer details — stacked on mobile, 4-up on desktop */}
       <div className="border-t border-white/10">
         <div className="mx-auto grid w-full max-w-[1320px] gap-16 px-6 py-14 md:grid-cols-2 md:gap-x-14 md:gap-y-12 lg:grid-cols-[1.15fr_1fr_1fr_0.9fr] lg:px-12 xl:gap-x-20">
-          <div className="text-center md:text-left">
-            <Logo variant="horizontal" tone="dark" size="sm" className="mb-6" />
-            <p className="max-w-[320px] text-[15px] leading-[1.7] text-white/68 md:max-w-none">
+          <div className="flex flex-col items-center text-center md:items-center md:text-center">
+            <Logo variant="stacked" tone="dark" size="sm" className="mb-6" />
+            <p className="max-w-[320px] text-[15px] leading-[1.7] text-white/75 max-[768px]:text-white/80 md:max-w-none">
               Family-owned plumbing and drain service across {BUSINESS.areaServed[0]} and the
               Coastal Bend.
             </p>
             <p
-              className="mt-5 font-mono text-[11px] uppercase text-white/45"
+              className="mt-5 font-mono text-[11px] uppercase text-white/55 max-[768px]:text-white/70"
               style={{ letterSpacing: "0.22em" }}
             >
               {BUSINESS.license} · Est. {BUSINESS.founded}
