@@ -29,26 +29,24 @@ export function Hero() {
         className="object-cover object-center"
       />
 
-      {/* Paper wash on the left so the copy stays legible without darkening the scene */}
+      {/* Tide-based gradient overlay for strong text contrast on the hero image */}
       <div
         aria-hidden="true"
         className="absolute inset-0 z-[1]"
         style={{
           background: `
-            linear-gradient(90deg,
-              rgba(251,251,249,0.96) 0%,
-              rgba(251,251,249,0.92) 28%,
-              rgba(251,251,249,0.62) 50%,
-              rgba(251,251,249,0.18) 72%,
-              rgba(251,251,249,0.00) 88%)
+            linear-gradient(180deg,
+              rgba(10,47,79,0.7) 0%,
+              rgba(10,47,79,0.4) 40%,
+              rgba(10,47,79,0.15) 100%)
           `,
         }}
       />
 
       <div className="container-1140 relative z-10 flex min-h-[calc(100vh-92px)] flex-col justify-center py-20 max-[768px]:min-h-[88vh] max-[768px]:py-16 max-[480px]:py-12">
         <p
-          className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase text-navy/80 max-[480px]:text-[10px]"
-          style={{ letterSpacing: "0.2em" }}
+          className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase text-white/90 max-[480px]:text-[10px]"
+          style={{ letterSpacing: "0.2em", textShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
         >
           <span>Family-owned</span>
           <span aria-hidden="true" className="h-[3px] w-[3px] rounded-full bg-gold" />
@@ -63,13 +61,17 @@ export function Hero() {
             fontSize: "clamp(40px, 6.4vw, 84px)",
             lineHeight: 0.98,
             letterSpacing: "-0.012em",
+            textShadow: "0 2px 12px rgba(0,0,0,0.35)",
           }}
         >
-          <span className="block text-navy">Honest work.</span>
+          <span className="block text-white">Honest work.</span>
           <span className="block text-gold">Clean solutions.</span>
         </h1>
 
-        <p className="mb-9 max-w-[460px] text-[16px] leading-[1.65] text-navy/75 max-[480px]:text-[14.5px]">
+        <p
+          className="mb-9 max-w-[460px] text-[16px] font-medium leading-[1.65] text-white/90 max-[480px]:text-[14.5px]"
+          style={{ textShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
+        >
           Plumbing and drain service across Corpus Christi and the Coastal Bend
           since 1976. Same-day appointments, written prices, and real techs on
           call when it can&rsquo;t wait.
@@ -78,7 +80,7 @@ export function Hero() {
         <div className="mb-10 flex flex-wrap gap-3 max-[480px]:flex-col">
           <a
             href="#contact"
-            className="copper-pulse inline-flex items-center justify-center gap-[10px] rounded-md bg-gold px-7 py-[15px] text-[15px] font-semibold text-white shadow-[0_10px_28px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark max-[480px]:w-full"
+            className="copper-pulse inline-flex items-center justify-center gap-[10px] rounded-md bg-gold px-7 py-[15px] text-[15px] font-semibold text-white shadow-[0_10px_30px_rgba(194,104,42,0.35)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark max-[480px]:w-full"
             style={{ letterSpacing: "0.01em" }}
           >
             <Calendar className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden="true" />
