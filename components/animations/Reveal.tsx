@@ -10,6 +10,13 @@ type RevealProps = {
   className?: string;
   /** Render as a different element (default: div). */
   as?: "div" | "section" | "ul";
+  /**
+   * "rise" (default): opacity + translateY (28px → 0).
+   * "fade": opacity only — use for elements with `backdrop-filter`, since
+   * animating transform on a parent forces the blur snapshot to be
+   * recomputed each frame and renders as flicker on WebKit/Blink.
+   */
+  mode?: "rise" | "fade";
 };
 
 /**
@@ -26,6 +33,7 @@ export function Reveal({
   stagger = false,
   className,
   as = "div",
+  mode = "rise",
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
   const MotionTag = motion[as];
@@ -74,6 +82,20 @@ export function Reveal({
         ) : (
           <motion.div variants={child}>{children}</motion.div>
         )}
+      </MotionTag>
+    );
+  }
+
+  if (mode === "fade") {
+    return (
+      <MotionTag
+        className={className}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
+        transition={{ duration: 0.7, ease }}
+      >
+        {children}
       </MotionTag>
     );
   }

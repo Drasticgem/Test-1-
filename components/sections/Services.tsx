@@ -83,11 +83,14 @@ function ServicePanel({
 }) {
   const accentHex = accentColorHex(division.accent);
 
+  const ctaHref =
+    division.slug === "emergency-service" ? "tel:+13613718163" : "/services";
+
   return (
     <article
       className={[
         "group relative isolate overflow-hidden",
-        "min-h-[640px] max-[1024px]:min-h-[580px] max-[768px]:min-h-[620px] max-[480px]:min-h-[560px]",
+        "min-h-[760px] max-[1024px]:min-h-[680px] max-[768px]:min-h-[760px] max-[480px]:min-h-[700px]",
         index > 0 ? "border-t border-warm-gray" : "",
       ].join(" ")}
     >
@@ -115,53 +118,68 @@ function ServicePanel({
         }}
       />
 
-      {/* Content — eyebrow rectangle floats above the glass card */}
-      <div className="relative z-[1] flex min-h-[inherit] items-center">
-        <div className="container-1140 flex w-full py-28 max-[1024px]:py-24 max-[768px]:py-20 max-[480px]:py-14">
-          <Reveal>
-            <div className="max-w-[520px]">
-              <p
-                className="mb-5 inline-flex items-center gap-2 rounded-md border border-white/25 bg-white/12 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-white shadow-[0_6px_20px_rgba(0,0,0,0.18)] backdrop-blur-md"
-                style={{ letterSpacing: "0.18em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
-              >
-                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
-                {`0${index + 1} · ${division.tagline}`}
-              </p>
+      {/* Layout — flex column stretches the full panel; the eyebrow pill
+          pins to the top, and the white card / CTA pin to the bottom.
+          Desktop (≥1024px) places the CTA bottom-right next to the card;
+          mobile keeps the CTA inside the card under the description. */}
+      <div className="relative z-[1] flex min-h-[inherit] flex-col">
+        <div className="container-1140 flex w-full flex-1 flex-col justify-between gap-12 py-12 max-[1024px]:gap-10 max-[1024px]:py-10 max-[768px]:gap-16 max-[768px]:py-8 max-[480px]:gap-12 max-[480px]:py-6">
+          {/* ── Top: glass eyebrow pill (top-left on desktop) ── */}
+          <Reveal mode="fade">
+            <p
+              className="inline-flex w-fit items-center gap-2 rounded-md border border-white/25 bg-white/12 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-white shadow-[0_6px_20px_rgba(0,0,0,0.18)] backdrop-blur-md"
+              style={{ letterSpacing: "0.18em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}
+            >
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
+              {`0${index + 1} · ${division.tagline}`}
+            </p>
+          </Reveal>
 
-              <div className="rounded-lg border border-warm-gray bg-white/85 p-8 shadow-[0_18px_48px_rgba(10,47,79,0.18)] backdrop-blur-md max-[480px]:p-6">
-              <h3
-                className="mb-4 font-[family-name:var(--font-display)] font-black text-navy"
-                style={{
-                  fontSize: "clamp(28px, 3.6vw, 44px)",
-                  lineHeight: 1.08,
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                {division.name}
-              </h3>
+          {/* ── Bottom row: white card (left) + standalone CTA (right, ≥1024px) ── */}
+          <div className="flex items-end justify-between gap-8 max-[1024px]:flex-col max-[1024px]:items-stretch max-[1024px]:gap-6">
+            <Reveal mode="fade" className="w-full max-w-[620px] max-[1024px]:max-w-none">
+              <div className="rounded-lg border border-warm-gray bg-white/85 p-10 shadow-[0_18px_48px_rgba(10,47,79,0.18)] backdrop-blur-md max-[1024px]:p-8 max-[480px]:p-6">
+                <h3
+                  className="mb-5 font-[family-name:var(--font-display)] font-black text-navy"
+                  style={{
+                    fontSize: "clamp(28px, 3.6vw, 44px)",
+                    lineHeight: 1.08,
+                    letterSpacing: "-0.015em",
+                  }}
+                >
+                  {division.name}
+                </h3>
 
-              <p className="mb-7 text-[15px] leading-[1.7] text-slate max-[480px]:text-[14px]">
-                {division.description}
-              </p>
+                <p className="text-[15px] leading-[1.7] text-slate max-[480px]:text-[14px]">
+                  {division.description}
+                </p>
 
+                {/* Mobile / tablet CTA — kept inside the card so the
+                    primary action stays in reach on small screens. */}
+                <a
+                  href={ctaHref}
+                  className="mt-7 hidden items-center gap-[8px] rounded-md bg-gold px-5 py-3 text-[12.5px] font-bold uppercase text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark max-[1024px]:inline-flex"
+                  style={{ letterSpacing: "0.1em", color: "#ffffff" }}
+                >
+                  {division.exploreLabel}
+                  <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                </a>
+                <span aria-hidden="true" className="sr-only" data-accent={accentHex} />
+              </div>
+            </Reveal>
+
+            {/* Desktop CTA — floats bottom-right, separate from the card */}
+            <Reveal mode="fade" className="shrink-0 max-[1024px]:hidden">
               <a
-                href={division.slug === "emergency-service" ? "tel:+13613718163" : "/services"}
-                className="group/cta inline-flex items-center gap-[8px] rounded-md bg-gold px-5 py-3 text-[12.5px] font-bold uppercase text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
+                href={ctaHref}
+                className="inline-flex items-center gap-[8px] rounded-md bg-gold px-6 py-4 text-[13px] font-bold uppercase text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
                 style={{ letterSpacing: "0.1em", color: "#ffffff" }}
               >
                 {division.exploreLabel}
                 <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
               </a>
-              {/* hidden accent reference so the per-division accent stays
-                  available as a future detail element (small underline, etc.) */}
-              <span
-                aria-hidden="true"
-                className="sr-only"
-                data-accent={accentHex}
-              />
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </div>
     </article>
