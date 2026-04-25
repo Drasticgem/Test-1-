@@ -1,35 +1,32 @@
 /**
- * Trust / safety credentials.
- * Shared between the hero trust row and the About section badges.
+ * Trust signals — surfaced on the hero trust row and the WhyChooseUs badges.
  */
 export interface Credential {
   value: string;
-  /** Display the value slightly smaller for multi-line values. */
   smallValue?: boolean;
   title: string;
   sub: string;
-  /** Short label for the hero trust row pill. */
   shortLabel: string;
 }
 
 export const CREDENTIALS: Credential[] = [
   {
-    value: ".46",
-    title: "Experience Modification Rate",
-    sub: "Industry-leading safety record",
-    shortLabel: "EMR .46",
-  },
-  {
-    value: "Top\nRated",
+    value: "M8552",
     smallValue: true,
-    title: "Safety Program Certified",
-    sub: "Placeholder certification details",
-    shortLabel: "Safety Certified",
+    title: "Master plumber licensed",
+    sub: "Texas Master Lic. M8552",
+    shortLabel: "Master Lic. M8552",
   },
   {
-    value: "4",
-    title: "Multiple Service Areas",
-    sub: "Placeholder service area coverage",
-    shortLabel: "4 Regional Offices",
+    value: "1976",
+    title: "Family-owned since",
+    sub: "Three generations in the Coastal Bend",
+    shortLabel: "Est. 1976",
+  },
+  {
+    value: "24/7",
+    title: "Emergency line answered",
+    sub: "Burst pipes, sewage backups, no-water calls",
+    shortLabel: "24/7 Emergency",
   },
 ];

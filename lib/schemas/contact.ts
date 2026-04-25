@@ -1,11 +1,15 @@
 import { z } from "zod";
 
 export const contactServices = [
-  "Electrical",
-  "A/C & Heating",
-  "Telecom",
-  "Custom Woodworking",
-  "General Inquiry",
+  "Drain cleaning",
+  "Water heater",
+  "Leak repair",
+  "Repipe",
+  "Sewer / main line",
+  "Fixtures or remodel",
+  "Gas line",
+  "24/7 emergency",
+  "General inquiry",
 ] as const;
 
 export const preferredContactMethods = ["Phone", "Email", "Text"] as const;

@@ -6,20 +6,21 @@ export interface CommunityCard {
 
 export const COMMUNITY: CommunityCard[] = [
   {
-    number: "$250K+",
-    title: "United Way partner",
+    number: "50+",
+    title: "Years in the Coastal Bend",
     description:
-      "Placeholder: describe annual fundraisers, volunteer work, and local partnerships.",
+      "Same family, same community, same handshake. We answer the phone in Corpus Christi.",
   },
   {
-    number: "14+",
-    title: "Charitable organizations",
+    number: "3",
+    title: "Generations of Owens",
     description:
-      "Boys & Girls Club, Habitat for Humanity, American Diabetes Association, March of Dimes, and more.",
+      "What grandpa started in 1976 still gets done with the same standard — written prices, clean job sites, on-time arrivals.",
   },
   {
-    number: "100+",
-    title: "Years in Business",
-    description: "Placeholder: summarize long-term local impact and community trust.",
+    number: "24/7",
+    title: "On-call for neighbors",
+    description:
+      "A real tech, on call, every night and every weekend. Local plumbing in the Coastal Bend means showing up when it counts.",
   },
 ];

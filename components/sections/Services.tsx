@@ -25,10 +25,10 @@ export function Services() {
             <div className="flex items-end justify-between gap-6 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-3">
               <div>
                 <p
-                  className="mb-2 text-[10px] font-semibold uppercase text-gold-dark"
+                  className="mb-2 text-[10px] font-semibold uppercase text-gold"
                   style={{ letterSpacing: "0.22em" }}
                 >
-                  Our Services
+                  What we do
                 </p>
                 <h2
                   className="font-[family-name:var(--font-display)] font-black text-navy"
@@ -38,14 +38,14 @@ export function Services() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Four divisions.
+                  Plumbing done right.
                   <br />
-                  One standard.
+                  Since 1976.
                 </h2>
               </div>
               <a
-                href="#"
-                className="group inline-flex shrink-0 items-center gap-[6px] whitespace-nowrap text-[13px] font-semibold text-gold-dark transition-colors duration-200 hover:text-gold"
+                href="/services"
+                className="group inline-flex shrink-0 items-center gap-[6px] whitespace-nowrap text-[13px] font-semibold text-gold transition-colors duration-200 hover:text-gold-dark"
                 style={{ letterSpacing: "0.03em" }}
               >
                 View all services
@@ -120,11 +120,6 @@ function ServicePanel({
         className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"
       />
 
-      {/* Per-panel overlay boost — Coastal Kitchens photo is high-key, so we
-          darken it a touch more to keep the white headline readable. */}
-      {division.slug === "custom-cabinetry" && (
-        <div aria-hidden="true" className="absolute inset-0 bg-navy/20" />
-      )}
 
       {/* Content — desktop: vertically centered single block.
           Mobile: column stretches full panel height, eyebrow+title pinned
@@ -135,13 +130,13 @@ function ServicePanel({
           <Reveal>
             <div className="max-w-[560px]">
               <p
-                className="mb-3 text-[10px] font-semibold uppercase"
+                className="mb-3 font-mono text-[11px] font-medium uppercase"
                 style={{
-                  letterSpacing: "0.22em",
+                  letterSpacing: "0.18em",
                   color: accentHex,
                 }}
               >
-                {`Division 0${index + 1}`}
+                {`0${index + 1} · ${division.tagline}`}
               </p>
 
               <h3
@@ -172,10 +167,10 @@ function ServicePanel({
               </p>
 
               <a
-                href="#"
-                className="group/cta mt-7 inline-flex items-center gap-[6px] text-[13px] font-semibold transition-[gap] duration-200 hover:gap-[10px] max-[768px]:mt-6"
+                href={division.slug === "emergency-service" ? "tel:+13613718163" : "/services"}
+                className="group/cta mt-7 inline-flex items-center gap-[6px] text-[13px] font-bold uppercase transition-[gap] duration-200 hover:gap-[10px] max-[768px]:mt-6"
                 style={{
-                  letterSpacing: "0.03em",
+                  letterSpacing: "0.12em",
                   color: accentHex,
                   transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
@@ -191,16 +186,16 @@ function ServicePanel({
   );
 }
 
-/* ── Accent token → hex (matches theme variables in globals.css) ── */
+/* ── Accent token → hex (Owen palette: Copper-led with neutral support) ── */
 function accentColorHex(accent: Division["accent"]) {
   switch (accent) {
     case "gold":
-      return "#D4A83A";
+      return "#C2682A"; // Copper — primary action
     case "ac-blue":
-      return "#4AA8C8";
+      return "#C5D2DC"; // soft Mist — cool, restrained
     case "tele-green":
-      return "#4AAF78";
+      return "#E5A472"; // Copper soft — secondary action
     case "ck-terra":
-      return "#C87A4A";
+      return "#DDD1BD"; // warm sand — heritage neutral
   }
 }

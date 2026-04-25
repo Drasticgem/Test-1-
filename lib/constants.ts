@@ -1,40 +1,60 @@
 /**
- * Reusable business constants.
- * Replace these values when creating a new client site.
+ * Owen Plumbing & Drain — business constants.
+ * Source: owenplumbing.com + brand guidelines (Master Lic. M8552, est. 1976).
  */
 export const BUSINESS = {
-  // Core placeholders for template customization
-  name: "COMPANY_NAME",
-  shortName: "COMPANY_SHORT_NAME",
-  tagline: "COMPANY_TAGLINE",
-  founder: "FOUNDER_NAME",
-  founded: 2000,
-  phone: "+15551234567",
-  phoneDisplay: "(555) 010-1234",
-  phoneHref: "tel:+15551234567",
-  email: "hello@example.com",
+  name: "Owen Plumbing & Drain",
+  shortName: "OWEN",
+  tagline: "Plumbing & Drain",
+  positioning: "Honest work. Clean solutions.",
+  founder: "the Owen family",
+  founded: 1976,
+  license: "Master Lic. M8552",
+
+  phone: "+13613718163",
+  phoneDisplay: "(361) 371-8163",
+  phoneHref: "tel:+13613718163",
+  email: "service@owenplumbing.com",
+
   paymentUrl: "#",
-  bookingUrl: "https://cal.com/example",
-  primaryColor: "oklch(62% 0.18 258)",
+  bookingUrl: "#contact",
+
+  // Brand primary (Tide). Token kept for any inline color reads.
+  primaryColor: "#0A2F4F",
+
   address: {
-    street: "123 Main St",
-    city: "CITY_NAME",
-    state: "ST",
-    zip: "00000",
-    full: "123 Main St, CITY_NAME, ST 00000",
+    street: "4830 Kostoryz Rd",
+    city: "Corpus Christi",
+    state: "TX",
+    zip: "78415",
+    full: "4830 Kostoryz Rd, Corpus Christi, TX 78415",
   },
+
+  areaServed: [
+    "Corpus Christi",
+    "Portland",
+    "Rockport",
+    "Aransas Pass",
+    "Robstown",
+    "Kingsville",
+    "Ingleside",
+  ],
+
   hours: {
-    weekdays: "8:00 AM - 6:00 PM",
-    saturday: "9:00 AM - 2:00 PM",
-    sunday: "Closed",
+    weekdays: "8:00 AM – 5:00 PM",
+    saturday: "Emergency only",
+    sunday: "Emergency only",
+    emergency: "24/7 emergency line",
   },
+
   socials: {
-    facebook: "https://facebook.com/company",
-    instagram: "https://instagram.com/company",
-    google: "https://g.page/company",
+    facebook: "https://www.facebook.com/owenplumbingcorpuschristi",
+    instagram: "https://www.instagram.com/owenplumbing",
+    google: "https://g.page/owenplumbing",
   },
+
   locations: [
-    { name: "Primary Location", isHQ: true },
-    { name: "Secondary Location", isHQ: false },
+    { name: "Corpus Christi", isHQ: true },
+    { name: "Coastal Bend", isHQ: false },
   ],
 } as const;
