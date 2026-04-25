@@ -20,45 +20,48 @@ export function ServicesGridSection({
   eyebrow = "Services",
 }: ServicesGridSectionProps) {
   return (
-    <section className="bg-paper py-20 max-[768px]:py-14">
+    <section className="bg-paper py-24 max-[768px]:py-16">
       <div className="container-1140">
-        <div className="mb-12 max-w-3xl max-[768px]:mb-8">
+        <div className="mb-14 max-w-3xl max-[768px]:mb-10">
           <p
-            className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+            className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
             style={{ letterSpacing: "0.18em" }}
           >
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
             {eyebrow}
           </p>
           <h2
             className="font-[family-name:var(--font-display)] font-black text-navy"
             style={{
-              fontSize: "clamp(28px, 3.4vw, 44px)",
-              lineHeight: 1.05,
-              letterSpacing: "-0.01em",
+              fontSize: "clamp(30px, 3.6vw, 46px)",
+              lineHeight: 1.04,
+              letterSpacing: "-0.012em",
             }}
           >
             {heading}
           </h2>
-          <p className="mt-4 text-[15px] leading-[1.7] text-slate">{description}</p>
+          <p className="mt-5 max-w-[640px] text-[15.5px] leading-[1.75] text-slate">
+            {description}
+          </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((service) => (
             <article
               key={service.slug}
-              className="flex flex-col rounded-md border border-warm-gray bg-paper p-7 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[2px] hover:border-gold/40 hover:shadow-md"
+              className="group flex flex-col rounded-lg border border-warm-gray bg-white p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-gold/40 hover:shadow-md"
             >
               <h3
-                className="mb-2 font-[family-name:var(--font-display)] font-black text-navy"
+                className="mb-3 font-[family-name:var(--font-display)] font-black text-navy"
                 style={{ fontSize: "22px", lineHeight: 1.15 }}
               >
                 {service.title}
               </h3>
-              <p className="mb-4 text-[14.5px] leading-[1.6] text-slate">
+              <p className="mb-5 text-[14.5px] leading-[1.65] text-slate">
                 {service.description}
               </p>
               {service.features?.length ? (
-                <ul className="mb-5 space-y-1.5 text-[13px] text-ink/80">
+                <ul className="mb-6 space-y-2 text-[13px] text-ink/80">
                   {service.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
                       <span
@@ -72,12 +75,12 @@ export function ServicesGridSection({
               ) : null}
               <Link
                 href="/contact"
-                className="group mt-auto inline-flex items-center gap-[6px] text-[13px] font-bold uppercase text-gold transition-colors hover:text-gold-dark"
-                style={{ letterSpacing: "0.12em" }}
+                className="group/cta mt-auto inline-flex items-center gap-[6px] text-[13px] font-bold uppercase text-gold-dark transition-colors hover:text-navy"
+                style={{ letterSpacing: "0.1em" }}
               >
                 Get a price
                 <ArrowRight
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-[3px]"
+                  className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-[3px]"
                   strokeWidth={2}
                   aria-hidden="true"
                 />

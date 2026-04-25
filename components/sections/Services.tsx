@@ -4,38 +4,34 @@ import { Reveal } from "@/components/animations/Reveal";
 import { ArrowRight } from "lucide-react";
 
 /**
- * Services section — header ("Four divisions. One standard.") followed by
- * four full-bleed photo sections (one per division). The header blends
- * directly into the first photo panel (no gap), so the whole block reads
- * as one continuous statement.
- *
- * Each photo section:
- *   - full-bleed next/image background (object-cover)
- *   - dark gradient overlay (stronger on the left, fades right)
- *   - eyebrow, display-font name, short subline, accent-colored CTA
- *   - identical content structure on mobile (stacked, left-aligned)
+ * Services section — header ("Plumbing done right.") followed by four
+ * full-bleed photo panels (one per division). Photos read naturally
+ * (warm, realistic) under a very soft Paper-tinted wash, and the copy
+ * lives in a soft white glass card so it stays legible without darkening
+ * the scene.
  */
 export function Services() {
   return (
     <section id="services" aria-label="Our services">
       {/* ── Header ── */}
-      <div className="bg-white pt-20 pb-14 max-[768px]:pt-12 max-[768px]:pb-10">
+      <div className="bg-paper pt-24 pb-16 max-[768px]:pt-16 max-[768px]:pb-12">
         <div className="container-1140">
           <Reveal>
-            <div className="flex items-end justify-between gap-6 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-3">
+            <div className="flex items-end justify-between gap-6 max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-4">
               <div>
                 <p
-                  className="mb-2 text-[10px] font-semibold uppercase text-gold"
-                  style={{ letterSpacing: "0.22em" }}
+                  className="mb-4 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
+                  style={{ letterSpacing: "0.18em" }}
                 >
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
                   What we do
                 </p>
                 <h2
                   className="font-[family-name:var(--font-display)] font-black text-navy"
                   style={{
-                    fontSize: "clamp(26px, 2.8vw, 34px)",
-                    lineHeight: 1.15,
-                    letterSpacing: "-0.01em",
+                    fontSize: "clamp(28px, 3vw, 38px)",
+                    lineHeight: 1.1,
+                    letterSpacing: "-0.012em",
                   }}
                 >
                   Plumbing done right.
@@ -45,8 +41,8 @@ export function Services() {
               </div>
               <a
                 href="/services"
-                className="group inline-flex shrink-0 items-center gap-[6px] whitespace-nowrap text-[13px] font-semibold text-gold transition-colors duration-200 hover:text-gold-dark"
-                style={{ letterSpacing: "0.03em" }}
+                className="group inline-flex shrink-0 items-center gap-[6px] whitespace-nowrap rounded-md border border-navy/15 bg-white px-5 py-3 text-[13px] font-bold uppercase text-navy shadow-sm transition-[background,border-color,transform] duration-200 hover:-translate-y-px hover:border-gold/60 hover:text-gold-dark"
+                style={{ letterSpacing: "0.1em" }}
               >
                 View all services
                 <ArrowRight
@@ -61,7 +57,7 @@ export function Services() {
       </div>
 
       {/* ── Four stacked photo panels ── */}
-      <div className="bg-navy">
+      <div className="bg-paper">
         {DIVISIONS.map((division, i) => (
           <ServicePanel
             key={division.slug}
@@ -91,13 +87,11 @@ function ServicePanel({
     <article
       className={[
         "group relative isolate overflow-hidden",
-        // Height — comfortable on desktop, taller on mobile so the photo breathes
-        "min-h-[460px] max-[1024px]:min-h-[440px] max-[768px]:min-h-[620px] max-[480px]:min-h-[580px]",
-        // Seam between stacked panels
-        index > 0 ? "border-t border-white/5" : "",
+        "min-h-[480px] max-[1024px]:min-h-[460px] max-[768px]:min-h-[600px] max-[480px]:min-h-[560px]",
+        index > 0 ? "border-t border-warm-gray" : "",
       ].join(" ")}
     >
-      {/* Background photo */}
+      {/* Background photo — left visible and natural */}
       <Image
         src={division.heroImage}
         alt={`${division.name} — ${division.tagline}`}
@@ -107,77 +101,57 @@ function ServicePanel({
         className="object-cover object-center transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
       />
 
-      {/* Shadow overlay — dark on the left where text sits, fades to the right.
-          On mobile we use a vertical sandwich gradient: dark at top and bottom
-          where the text groups live, transparent through the middle so the
-          background photo reads cleanly. */}
+      {/* Soft Paper-tinted wash on the left so the card sits on a clean
+          surface without darkening the scene. Fades to transparent
+          across the panel so the photo reads naturally on the right. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/20 max-[768px]:bg-[linear-gradient(to_bottom,rgba(15,32,64,0.9)_0%,rgba(15,32,64,0.55)_22%,rgba(15,32,64,0.15)_50%,rgba(15,32,64,0.55)_78%,rgba(15,32,64,0.9)_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-paper/85 via-paper/40 to-transparent max-[768px]:bg-gradient-to-b max-[768px]:from-paper/90 max-[768px]:via-paper/30 max-[768px]:to-transparent"
       />
 
-
-      {/* Content — desktop: vertically centered single block.
-          Mobile: column stretches full panel height, eyebrow+title pinned
-          near the top, description+CTA pinned near the bottom, with a
-          flex spacer in between so the photo breathes through the middle. */}
-      <div className="relative z-[1] flex min-h-[inherit] items-center max-[768px]:items-stretch">
-        <div className="container-1140 flex w-full flex-col py-16 max-[768px]:py-14 max-[480px]:py-12">
+      {/* Content — soft white glass card with navy text */}
+      <div className="relative z-[1] flex min-h-[inherit] items-center">
+        <div className="container-1140 flex w-full py-20 max-[768px]:py-16 max-[480px]:py-12">
           <Reveal>
-            <div className="max-w-[560px]">
+            <div className="max-w-[520px] rounded-lg border border-warm-gray bg-white/85 p-8 shadow-[0_18px_48px_rgba(10,47,79,0.12)] backdrop-blur-md max-[480px]:p-6">
               <p
-                className="mb-3 font-mono text-[11px] font-medium uppercase"
-                style={{
-                  letterSpacing: "0.18em",
-                  color: accentHex,
-                }}
+                className="mb-3 inline-flex items-center gap-2 rounded-full bg-gold/10 px-2.5 py-1 font-mono text-[11px] font-semibold uppercase text-gold-dark"
+                style={{ letterSpacing: "0.18em" }}
               >
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
                 {`0${index + 1} · ${division.tagline}`}
               </p>
 
               <h3
-                className="font-[family-name:var(--font-display)] font-black text-white"
+                className="mb-4 font-[family-name:var(--font-display)] font-black text-navy"
                 style={{
-                  fontSize: "clamp(30px, 4.2vw, 52px)",
+                  fontSize: "clamp(28px, 3.6vw, 44px)",
                   lineHeight: 1.08,
                   letterSpacing: "-0.015em",
                 }}
               >
                 {division.name}
               </h3>
-            </div>
-          </Reveal>
 
-          {/* Spacer — only grows on mobile so the photo is visible through
-              the middle of the panel. Collapses on desktop so the two text
-              groups read as one block. */}
-          <div
-            aria-hidden="true"
-            className="hidden max-[768px]:block max-[768px]:flex-1 max-[768px]:min-h-[80px]"
-          />
-
-          <Reveal>
-            <div className="max-w-[520px] mt-4 max-[768px]:mt-0">
-              <p className="text-[15px] leading-[1.65] text-white/75 max-[480px]:text-[14px]">
+              <p className="mb-7 text-[15px] leading-[1.7] text-slate max-[480px]:text-[14px]">
                 {division.description}
               </p>
 
               <a
                 href={division.slug === "emergency-service" ? "tel:+13613718163" : "/services"}
-                className="group/cta mt-7 inline-flex items-center gap-[6px] text-[13px] font-bold uppercase transition-[gap] duration-200 hover:gap-[10px] max-[768px]:mt-6"
-                style={{
-                  letterSpacing: "0.12em",
-                  color: accentHex,
-                  transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                }}
+                className="group/cta inline-flex items-center gap-[8px] rounded-md bg-gold px-5 py-3 text-[12.5px] font-bold uppercase text-white shadow-[0_8px_24px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
+                style={{ letterSpacing: "0.1em", color: "#ffffff" }}
               >
                 {division.exploreLabel}
                 <ArrowRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
               </a>
+              {/* hidden accent reference so the per-division accent stays
+                  available as a future detail element (small underline, etc.) */}
+              <span
+                aria-hidden="true"
+                className="sr-only"
+                data-accent={accentHex}
+              />
             </div>
           </Reveal>
         </div>

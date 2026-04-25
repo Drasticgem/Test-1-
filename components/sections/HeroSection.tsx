@@ -12,7 +12,8 @@ interface HeroSectionProps {
 
 /**
  * Compact page header for non-home routes (About, Services, Contact).
- * Tide background, paper text, optional copper CTA pair.
+ * Light Mist surface with a navy headline, copper eyebrow, and a
+ * dominant copper primary CTA paired with an outline secondary.
  */
 export function HeroSection({
   eyebrow,
@@ -24,35 +25,41 @@ export function HeroSection({
   secondaryCtaHref,
 }: HeroSectionProps) {
   return (
-    <section className="bg-navy text-white">
-      <div className="container-1140 py-20 max-[768px]:py-14">
+    <section className="relative overflow-hidden bg-mist">
+      {/* Soft top-down highlight to add depth without darkening the surface */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent"
+      />
+      <div className="container-1140 relative py-24 max-[768px]:py-16">
         {eyebrow ? (
           <p
-            className="mb-4 font-mono text-[11px] font-medium uppercase text-gold-light"
+            className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
             style={{ letterSpacing: "0.18em" }}
           >
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
             {eyebrow}
           </p>
         ) : null}
         <h1
-          className="max-w-3xl font-[family-name:var(--font-display)] font-black"
+          className="max-w-3xl font-[family-name:var(--font-display)] font-black text-navy"
           style={{
-            fontSize: "clamp(32px, 4.4vw, 56px)",
+            fontSize: "clamp(34px, 4.6vw, 60px)",
             lineHeight: 1.02,
-            letterSpacing: "-0.01em",
+            letterSpacing: "-0.012em",
           }}
         >
           {title}
         </h1>
-        <p className="mt-5 max-w-2xl text-[15.5px] leading-[1.65] text-white/75 md:text-[16.5px]">
+        <p className="mt-6 max-w-[640px] text-[15.5px] leading-[1.7] text-slate md:text-[16.5px]">
           {subtitle}
         </p>
         {(primaryCtaLabel && primaryCtaHref) || (secondaryCtaLabel && secondaryCtaHref) ? (
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-9 flex flex-wrap gap-3">
             {primaryCtaLabel && primaryCtaHref ? (
               <Link
                 href={primaryCtaHref}
-                className="rounded-md bg-gold px-6 py-3 text-[13px] font-bold uppercase text-white transition hover:bg-gold-dark"
+                className="copper-pulse inline-flex items-center gap-2 rounded-md bg-gold px-7 py-[14px] text-[13px] font-bold uppercase text-white shadow-[0_10px_28px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
                 style={{ letterSpacing: "0.12em" }}
               >
                 {primaryCtaLabel}
@@ -61,7 +68,7 @@ export function HeroSection({
             {secondaryCtaLabel && secondaryCtaHref ? (
               <Link
                 href={secondaryCtaHref}
-                className="rounded-md border border-white/35 px-6 py-3 text-[13px] font-bold uppercase text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-md border border-navy/20 bg-white px-7 py-[14px] text-[13px] font-bold uppercase text-navy shadow-sm transition-[background,border-color,transform] duration-200 hover:-translate-y-px hover:border-navy/35 hover:bg-paper"
                 style={{ letterSpacing: "0.12em" }}
               >
                 {secondaryCtaLabel}
@@ -70,6 +77,8 @@ export function HeroSection({
           </div>
         ) : null}
       </div>
+      {/* Hairline base separator */}
+      <div aria-hidden="true" className="h-px w-full bg-warm-gray" />
     </section>
   );
 }

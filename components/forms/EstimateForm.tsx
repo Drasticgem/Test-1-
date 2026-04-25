@@ -206,8 +206,8 @@ export function EstimateForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-navy px-7 py-[14px] text-[14px] font-bold text-white transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-navy-mid disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 sm:w-auto"
-        style={{ letterSpacing: "0.04em" }}
+        className="copper-pulse mt-6 inline-flex w-full items-center justify-center rounded-md bg-gold px-7 py-[14px] text-[14px] font-bold uppercase text-white shadow-[0_10px_28px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 sm:w-auto"
+        style={{ letterSpacing: "0.1em" }}
       >
         {status === "submitting" ? (
           <>
