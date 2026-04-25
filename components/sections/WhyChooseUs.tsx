@@ -4,111 +4,116 @@ import { STATS } from "@/lib/data/stats";
 import { Reveal } from "@/components/animations/Reveal";
 
 /**
- * Why choose Owen — full-bleed photo of an Owen tech at work, paired with
- * trust badges from the credentials data. Followed by the 4-cell stats bar.
+ * Why choose Owen — light Mist surface with a two-column layout: copy
+ * and soft-filled credential pills on the left, a soft photo card with
+ * the Owen tech on the right. Followed by the 4-cell stats bar on Paper.
  */
 export function WhyChooseUs() {
   return (
-    <section id="why-choose-us" aria-label="Why choose Owen Plumbing & Drain" className="bg-navy">
-      <article
-        className={[
-          "group relative isolate overflow-hidden",
-          "min-h-[620px] max-[1024px]:min-h-[580px] max-[768px]:min-h-[980px] max-[480px]:min-h-[940px]",
-          "border-t border-white/5",
-        ].join(" ")}
-      >
-        <Image
-          src="/images/owen-technician.png"
-          alt="Owen Plumbing & Drain technician working under a kitchen sink"
-          fill
-          sizes="100vw"
-          className="object-cover object-center transition-transform duration-[700ms] ease-out group-hover:scale-[1.03]"
-        />
+    <section
+      id="why-choose-us"
+      aria-label="Why choose Owen Plumbing & Drain"
+      className="bg-mist"
+    >
+      <div className="container-1140 py-28 max-[768px]:py-20">
+        <div className="grid items-center gap-16 md:grid-cols-[1fr_1fr] md:gap-20 max-[768px]:gap-12">
+          <Reveal>
+            <div className="max-w-[560px]">
+              <p
+                className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
+                style={{ letterSpacing: "0.18em" }}
+              >
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
+                Why Owen
+              </p>
+              <h2
+                className="mb-5 font-[family-name:var(--font-display)] font-black text-navy"
+                style={{
+                  fontSize: "clamp(30px, 3.8vw, 46px)",
+                  lineHeight: 1.04,
+                  letterSpacing: "-0.012em",
+                }}
+              >
+                Licensed, insured,
+                <br />
+                and on time.
+              </h2>
+              <p className="mb-8 max-w-[520px] text-[15.5px] leading-[1.75] text-slate max-[480px]:text-[14.5px]">
+                Three things that matter, in seven words. We diagnose first, write the
+                price, and only run equipment with your sign-off — so the number on the
+                invoice is the number we said in the driveway.
+              </p>
 
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy/75 to-navy/25 max-[768px]:bg-[linear-gradient(to_bottom,rgba(6,30,51,0.95)_0%,rgba(10,47,79,0.65)_28%,rgba(10,47,79,0.55)_55%,rgba(6,30,51,0.85)_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 via-transparent to-transparent"
-        />
+              <Reveal stagger className="flex flex-col gap-3">
+                {CREDENTIALS.map((c) => (
+                  <WhyBadge
+                    key={c.shortLabel}
+                    value={c.value}
+                    smallValue={c.smallValue}
+                    title={c.title}
+                    sub={c.sub}
+                  />
+                ))}
+              </Reveal>
+            </div>
+          </Reveal>
 
-        <div className="relative z-[1] flex min-h-[inherit] items-center">
-          <div className="container-1140 grid w-full grid-cols-2 items-center gap-16 py-20 max-[1024px]:gap-12 max-[768px]:grid-cols-1 max-[768px]:gap-12 max-[768px]:py-24 max-[480px]:py-20">
-            <Reveal>
-              <div className="max-w-[560px]">
+          <Reveal>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-warm-gray bg-mist shadow-[0_18px_48px_rgba(10,47,79,0.12)] max-[768px]:aspect-[4/3]">
+              <Image
+                src="/images/owen-technician.png"
+                alt="Owen Plumbing & Drain technician working under a kitchen sink"
+                fill
+                sizes="(min-width: 768px) 540px, 100vw"
+                className="object-cover object-center"
+              />
+              {/* Light caption strip — quiet, not loud */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/95 via-white/60 to-transparent p-6">
                 <p
-                  className="mb-3 font-mono text-[11px] font-medium uppercase text-gold-light"
+                  className="font-mono text-[10.5px] uppercase text-navy/70"
                   style={{ letterSpacing: "0.18em" }}
                 >
-                  Why Owen
-                </p>
-                <h2
-                  className="mb-5 font-[family-name:var(--font-display)] font-black text-white"
-                  style={{
-                    fontSize: "clamp(28px, 3.6vw, 44px)",
-                    lineHeight: 1.05,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  Licensed, insured,
-                  <br />
-                  and on time.
-                </h2>
-                <p className="text-[15.5px] leading-[1.7] text-white/75 max-[480px]:text-[14px]">
-                  Three things that matter, in seven words. We diagnose first, write the
-                  price, and only run equipment with your sign-off — so the number on the
-                  invoice is the number we said in the driveway.
+                  On-site · Coastal Bend
                 </p>
               </div>
-            </Reveal>
-
-            <Reveal stagger className="flex flex-col gap-3 max-[768px]:gap-3">
-              {CREDENTIALS.map((c) => (
-                <WhyBadge
-                  key={c.shortLabel}
-                  value={c.value}
-                  smallValue={c.smallValue}
-                  title={c.title}
-                  sub={c.sub}
-                />
-              ))}
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
-      </article>
+      </div>
 
-      <Reveal>
-        <div className="container-1140">
-          <div
-            className={[
-              "grid grid-cols-4 max-[768px]:grid-cols-2",
-              "[&>*]:border-r [&>*]:border-white/5",
-              "[&>*:last-child]:border-r-0",
-              "max-[768px]:[&>*:nth-child(2)]:border-r-0",
-              "border-t border-white/5",
-            ].join(" ")}
-          >
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="px-6 py-8 text-center transition-colors duration-200 hover:bg-white/[0.015] max-[480px]:px-3 max-[480px]:py-5"
-              >
-                <div className="font-[family-name:var(--font-display)] text-[32px] font-bold leading-none text-gold max-[480px]:text-[24px]">
-                  {stat.number}
-                </div>
+      {/* Stats bar — Paper surface, navy values with a copper accent number */}
+      <div className="border-t border-warm-gray bg-paper">
+        <Reveal>
+          <div className="container-1140">
+            <div
+              className={[
+                "grid grid-cols-4 max-[768px]:grid-cols-2",
+                "[&>*]:border-r [&>*]:border-warm-gray",
+                "[&>*:last-child]:border-r-0",
+                "max-[768px]:[&>*:nth-child(2)]:border-r-0",
+                "max-[768px]:[&>*:nth-child(-n+2)]:border-b max-[768px]:[&>*:nth-child(-n+2)]:border-warm-gray",
+              ].join(" ")}
+            >
+              {STATS.map((stat) => (
                 <div
-                  className="mt-[6px] font-mono text-[10px] font-medium uppercase text-white/45 max-[480px]:text-[9px]"
-                  style={{ letterSpacing: "0.14em" }}
+                  key={stat.label}
+                  className="px-6 py-10 text-center transition-colors duration-200 hover:bg-mist max-[480px]:px-3 max-[480px]:py-7"
                 >
-                  {stat.label}
+                  <div className="font-[family-name:var(--font-display)] text-[34px] font-bold leading-none text-gold max-[480px]:text-[26px]">
+                    {stat.number}
+                  </div>
+                  <div
+                    className="mt-2 font-mono text-[10.5px] font-medium uppercase text-navy/60 max-[480px]:text-[9.5px]"
+                    style={{ letterSpacing: "0.16em" }}
+                  >
+                    {stat.label}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }
@@ -125,10 +130,10 @@ function WhyBadge({
   sub: string;
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-md border border-white/[0.08] bg-navy-deep/75 px-5 py-[18px] transition-colors duration-200 hover:bg-navy-deep/90">
+    <div className="flex items-center gap-4 rounded-lg border border-warm-gray bg-white px-5 py-[18px] shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[2px] hover:border-gold/40 hover:shadow-md">
       <div
-        className={`min-w-[80px] shrink-0 font-[family-name:var(--font-display)] font-bold leading-none text-gold-light ${
-          smallValue ? "text-[18px] leading-[1.2]" : "text-[26px]"
+        className={`grid min-w-[68px] shrink-0 place-items-center rounded-md bg-gold/10 px-3 py-2 font-[family-name:var(--font-display)] font-bold leading-none text-gold-dark ${
+          smallValue ? "text-[16px] leading-[1.2]" : "text-[22px]"
         }`}
       >
         {value.split("\n").map((line, i) => (
@@ -136,8 +141,8 @@ function WhyBadge({
         ))}
       </div>
       <div>
-        <div className="mb-[2px] text-[14px] font-semibold text-white">{title}</div>
-        <div className="text-[12.5px] text-white/55">{sub}</div>
+        <div className="mb-[2px] text-[14.5px] font-bold text-navy">{title}</div>
+        <div className="text-[12.5px] text-slate">{sub}</div>
       </div>
     </div>
   );

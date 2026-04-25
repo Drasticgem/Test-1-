@@ -3,40 +3,50 @@ import { Reveal } from "@/components/animations/Reveal";
 import { EstimateForm } from "@/components/forms/EstimateForm";
 
 /**
- * Closing CTA — Tide band with copy + phone CTA on the left, estimate form
- * on the right. Anchor target for "#contact" links across the site.
+ * Closing CTA — light Mist surface so the copper CTA and the white
+ * estimate-form card become the dominant elements. Anchor target for
+ * "#contact" links across the site.
  */
 export function CTA() {
   return (
-    <section id="contact" className="bg-navy py-24 max-[768px]:py-16">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-mist py-28 max-[768px]:py-20"
+    >
+      {/* Soft top wash for subtle layering */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent"
+      />
       <Reveal>
-        <div className="container-1140 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
+        <div className="container-1140 relative grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-20">
           <div className="max-[768px]:text-center">
             <p
-              className="mb-3 font-mono text-[11px] font-medium uppercase text-gold-light"
+              className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
               style={{ letterSpacing: "0.18em" }}
             >
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
               Start your job
             </p>
             <h2
-              className="mb-5 font-[family-name:var(--font-display)] font-black text-white"
+              className="mb-6 font-[family-name:var(--font-display)] font-black text-navy"
               style={{
-                fontSize: "clamp(28px, 3.6vw, 48px)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.01em",
+                fontSize: "clamp(30px, 3.8vw, 50px)",
+                lineHeight: 1.04,
+                letterSpacing: "-0.012em",
               }}
             >
               Tell us what&rsquo;s leaking. We&rsquo;ll tell you the price.
             </h2>
-            <p className="mb-7 max-w-[480px] text-[15.5px] leading-[1.65] text-white/70 max-[768px]:mx-auto">
+            <p className="mb-8 max-w-[480px] text-[15.5px] leading-[1.75] text-slate max-[768px]:mx-auto">
               Send the details and we&rsquo;ll get back to you within one business day
               with a written estimate. Need it sooner? Pick up the phone — we answer
               24/7.
             </p>
             <a
               href={BUSINESS.phoneHref}
-              className="copper-pulse inline-flex items-center gap-2 rounded-md bg-gold px-7 py-[14px] text-[14px] font-bold text-white shadow-[0_8px_24px_rgba(194,104,42,0.35)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
-              style={{ letterSpacing: "0.06em" }}
+              className="copper-pulse inline-flex items-center gap-2 rounded-md bg-gold px-8 py-[15px] text-[14px] font-bold uppercase text-white shadow-[0_12px_32px_rgba(194,104,42,0.35)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark"
+              style={{ letterSpacing: "0.1em" }}
             >
               <svg
                 width="16"
@@ -54,7 +64,7 @@ export function CTA() {
               Call {BUSINESS.phoneDisplay}
             </a>
             <p
-              className="mt-5 font-mono text-[11px] uppercase text-white/45 max-[768px]:mx-auto"
+              className="mt-6 font-mono text-[11px] uppercase text-navy/55 max-[768px]:mx-auto"
               style={{ letterSpacing: "0.16em" }}
             >
               {BUSINESS.license} · est. {BUSINESS.founded}

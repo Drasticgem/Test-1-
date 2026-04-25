@@ -12,21 +12,22 @@ export default function ContactPage() {
         subtitle="Send the details and we'll come back to you within one business day with a written estimate. Need it sooner? Pick up the phone — we answer 24/7."
       />
 
-      <section className="bg-paper py-20 max-[768px]:py-14">
-        <div className="container-1140 grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-14">
+      <section className="bg-paper py-24 max-[768px]:py-16">
+        <div className="container-1140 grid gap-14 md:grid-cols-[1.2fr_1fr] md:gap-16">
           <div>
             <p
-              className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+              className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
               style={{ letterSpacing: "0.18em" }}
             >
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
               Send us a note
             </p>
             <h2
-              className="mb-6 font-[family-name:var(--font-display)] font-black text-navy"
+              className="mb-7 font-[family-name:var(--font-display)] font-black text-navy"
               style={{
-                fontSize: "clamp(24px, 2.6vw, 34px)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.01em",
+                fontSize: "clamp(26px, 2.8vw, 36px)",
+                lineHeight: 1.08,
+                letterSpacing: "-0.012em",
               }}
             >
               Tell us about the job.
@@ -35,11 +36,12 @@ export default function ContactPage() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-md border border-warm-gray bg-mist p-7">
+            <div className="rounded-lg border border-warm-gray bg-white p-7 shadow-sm">
               <p
-                className="mb-3 font-mono text-[11px] font-medium uppercase text-gold"
+                className="mb-4 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
                 style={{ letterSpacing: "0.18em" }}
               >
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
                 Or reach us directly
               </p>
               <ul className="space-y-4 text-[14.5px] text-ink">
@@ -82,18 +84,19 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            <div className="rounded-md border border-warm-gray bg-paper p-7">
+            <div className="rounded-lg border border-warm-gray bg-white p-7 shadow-sm">
               <p
-                className="mb-3 font-mono text-[11px] font-medium uppercase text-gold"
+                className="mb-4 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
                 style={{ letterSpacing: "0.18em" }}
               >
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
                 Service area
               </p>
               <div className="flex flex-wrap gap-2">
                 {BUSINESS.areaServed.map((city) => (
                   <span
                     key={city}
-                    className="rounded-full border border-warm-gray bg-mist px-3 py-1.5 text-[12.5px] font-medium text-navy"
+                    className="rounded-full bg-mist px-3 py-1.5 text-[12.5px] font-semibold text-navy/80"
                   >
                     {city}
                   </span>
@@ -102,7 +105,7 @@ export default function ContactPage() {
             </div>
 
             <p
-              className="font-mono text-[11px] uppercase text-slate"
+              className="font-mono text-[11px] uppercase text-navy/55"
               style={{ letterSpacing: "0.16em" }}
             >
               {BUSINESS.license} · est. {BUSINESS.founded}

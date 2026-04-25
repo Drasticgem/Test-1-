@@ -17,26 +17,27 @@ export default function AboutPage() {
       />
 
       {/* Story + photo */}
-      <section className="bg-paper py-20 max-[768px]:py-14">
-        <div className="container-1140 grid gap-14 md:grid-cols-[1.1fr_1fr] md:items-start md:gap-16">
+      <section className="bg-paper py-24 max-[768px]:py-16">
+        <div className="container-1140 grid gap-16 md:grid-cols-[1.1fr_1fr] md:items-start md:gap-20">
           <div>
             <p
-              className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+              className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
               style={{ letterSpacing: "0.18em" }}
             >
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
               Our story
             </p>
             <h2
-              className="mb-5 font-[family-name:var(--font-display)] font-black text-navy"
+              className="mb-6 font-[family-name:var(--font-display)] font-black text-navy"
               style={{
-                fontSize: "clamp(26px, 3vw, 40px)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.01em",
+                fontSize: "clamp(28px, 3.2vw, 42px)",
+                lineHeight: 1.04,
+                letterSpacing: "-0.012em",
               }}
             >
               Plumbing, the long way.
             </h2>
-            <div className="space-y-4 text-[15.5px] leading-[1.7] text-slate">
+            <div className="max-w-[560px] space-y-5 text-[15.5px] leading-[1.75] text-slate">
               <p>
                 Owen Plumbing &amp; Drain opened in 1976 on a single truck and a
                 handshake. Fifty years later we&rsquo;re still answering the phone in
@@ -57,7 +58,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-md border border-warm-gray shadow-sm">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-warm-gray bg-mist shadow-[0_18px_48px_rgba(10,47,79,0.12)]">
             <Image
               src="/images/owen-sign.png"
               alt="Owen Plumbing & Drain yard sign at dusk"
@@ -70,32 +71,33 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="bg-mist py-20 max-[768px]:py-14">
+      <section className="bg-mist py-24 max-[768px]:py-16">
         <div className="container-1140">
           <p
-            className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+            className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
             style={{ letterSpacing: "0.18em" }}
           >
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
             The crew
           </p>
           <h2
-            className="mb-10 font-[family-name:var(--font-display)] font-black text-navy"
+            className="mb-12 font-[family-name:var(--font-display)] font-black text-navy"
             style={{
-              fontSize: "clamp(24px, 2.6vw, 34px)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.01em",
+              fontSize: "clamp(26px, 2.8vw, 36px)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.012em",
             }}
           >
             Same faces, year after year.
           </h2>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {team.map((member) => (
               <article
                 key={member.name}
-                className="rounded-md border border-warm-gray bg-paper p-7"
+                className="group rounded-lg border border-warm-gray bg-white p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-gold/40 hover:shadow-md"
               >
                 <p
-                  className="mb-1 font-mono text-[10.5px] uppercase text-gold"
+                  className="mb-2 inline-flex items-center gap-2 rounded-full bg-gold/10 px-2.5 py-1 font-mono text-[10.5px] font-semibold uppercase text-gold-dark"
                   style={{ letterSpacing: "0.16em" }}
                 >
                   {member.role}
@@ -103,7 +105,7 @@ export default function AboutPage() {
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-[20px] font-black text-navy">
                   {member.name}
                 </h3>
-                <p className="text-[14px] leading-[1.65] text-slate">{member.bio}</p>
+                <p className="text-[14px] leading-[1.7] text-slate">{member.bio}</p>
               </article>
             ))}
           </div>
@@ -111,39 +113,40 @@ export default function AboutPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-paper py-20 max-[768px]:py-14">
+      <section className="bg-paper py-24 max-[768px]:py-16">
         <div className="container-1140">
           <p
-            className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+            className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
             style={{ letterSpacing: "0.18em" }}
           >
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
             Neighbors say
           </p>
           <h2
-            className="mb-10 max-w-3xl font-[family-name:var(--font-display)] font-black text-navy"
+            className="mb-12 max-w-3xl font-[family-name:var(--font-display)] font-black text-navy"
             style={{
-              fontSize: "clamp(24px, 2.6vw, 34px)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.01em",
+              fontSize: "clamp(26px, 2.8vw, 36px)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.012em",
             }}
           >
             What customers tell us afterwards.
           </h2>
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
               <figure
                 key={t.name}
-                className="rounded-md border border-warm-gray bg-paper p-7"
+                className="rounded-lg border border-warm-gray bg-white p-8 shadow-sm transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-gold/40 hover:shadow-md"
               >
                 <svg
-                  className="mb-3 h-5 w-5 text-gold"
+                  className="mb-4 h-5 w-5 text-gold"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
                 >
                   <path d="M7 7h4v4H7c0 2 .5 3.5 1.5 4.5L7 17c-2-1.5-3-3.5-3-6V7zm9 0h4v4h-4c0 2 .5 3.5 1.5 4.5L16 17c-2-1.5-3-3.5-3-6V7z" />
                 </svg>
-                <blockquote className="mb-4 text-[15.5px] leading-[1.65] text-ink">
+                <blockquote className="mb-5 text-[15.5px] leading-[1.7] text-ink">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="text-[13px] text-slate">
@@ -156,31 +159,32 @@ export default function AboutPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-mist py-20 max-[768px]:py-14">
+      <section className="bg-mist py-24 max-[768px]:py-16">
         <div className="container-1140">
           <p
-            className="mb-2 font-mono text-[11px] font-medium uppercase text-gold"
+            className="mb-5 inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1.5 font-mono text-[11px] font-semibold uppercase text-gold-dark"
             style={{ letterSpacing: "0.18em" }}
           >
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-gold" />
             Common questions
           </p>
           <h2
-            className="mb-10 font-[family-name:var(--font-display)] font-black text-navy"
+            className="mb-12 font-[family-name:var(--font-display)] font-black text-navy"
             style={{
-              fontSize: "clamp(24px, 2.6vw, 34px)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.01em",
+              fontSize: "clamp(26px, 2.8vw, 36px)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.012em",
             }}
           >
             Things people ask before they call.
           </h2>
-          <dl className="divide-y divide-warm-gray rounded-md border border-warm-gray bg-paper">
+          <dl className="divide-y divide-warm-gray overflow-hidden rounded-lg border border-warm-gray bg-white shadow-sm">
             {faqs.map((f) => (
-              <div key={f.question} className="px-6 py-6">
+              <div key={f.question} className="px-7 py-7">
                 <dt className="mb-2 font-[family-name:var(--font-display)] text-[17px] font-bold text-navy">
                   {f.question}
                 </dt>
-                <dd className="text-[14.5px] leading-[1.65] text-slate">{f.answer}</dd>
+                <dd className="text-[14.5px] leading-[1.7] text-slate">{f.answer}</dd>
               </div>
             ))}
           </dl>

@@ -76,7 +76,7 @@ export function ContactForm({ sourcePage = "/contact" }: ContactFormProps) {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="mt-8 rounded-xl border border-navy/10 bg-white p-6 shadow-sm"
+      className="mt-8 rounded-lg border border-warm-gray bg-white p-7 shadow-sm"
       aria-describedby="contact-form-status"
     >
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -186,7 +186,8 @@ export function ContactForm({ sourcePage = "/contact" }: ContactFormProps) {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-6 inline-flex items-center rounded-lg bg-navy px-6 py-3 font-semibold text-white transition hover:bg-navy-mid disabled:cursor-not-allowed disabled:opacity-70"
+        className="copper-pulse mt-6 inline-flex items-center rounded-md bg-gold px-7 py-3 text-[13px] font-bold uppercase text-white shadow-[0_10px_28px_rgba(194,104,42,0.32)] transition-[background,transform] duration-200 hover:-translate-y-px hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+        style={{ letterSpacing: "0.1em" }}
       >
         {submitting ? "Sending..." : "Send Message"}
       </button>
