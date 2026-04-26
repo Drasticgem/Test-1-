@@ -23,7 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-warm-gray bg-paper/92 backdrop-blur-md">
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-[92px] w-full max-w-[1320px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12"
+        className="mx-auto flex h-[88px] w-full max-w-[1320px] items-center justify-between gap-6 px-5 sm:px-8 lg:h-[124px] lg:px-12"
       >
         <Link href="/" aria-label={BUSINESS.name} className="shrink-0">
           {/* Horizontal primary lockup 2 — sized down for mobile so the
